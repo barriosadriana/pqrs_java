@@ -5,5 +5,5 @@ Integrantes:
 *Arturo Marrugo Llamas*    
 *Jhojam Caraballo Tapia*    
 *Ismael David Trocha*  
-*Jordan Jose Miranda Perez*
+*Jordan Miranda Perez*
 
