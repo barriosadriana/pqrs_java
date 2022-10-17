@@ -1,2 +1,5 @@
 juan,cabarcas,cc,12345,1,ciudadano,juan1,
-maria,cabrera,cc,54321,2,ciudadano,maria1
+maria,cabrera,cc,54321,2,ciudadano,maria1,
+Adriana,Barrios,cc,9900334,3,administrador,adriana1,
+Arturo,Marrugo,cc,88334545,4,funcionario,arturo1,
+Jhojam,Caraballo,cc,44575484,5,administrador,Jhojam1
