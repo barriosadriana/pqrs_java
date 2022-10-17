@@ -1,0 +1,2 @@
+juan,cabarcas,cc,12345,1,ciudadano,juan1,
+maria,cabrera,cc,54321,2,ciudadano,maria1

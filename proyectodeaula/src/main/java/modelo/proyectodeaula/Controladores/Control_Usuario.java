@@ -11,21 +11,11 @@ import static modelo.proyectodeaula.menus.menuUsuario.MenuUsuario;
 public class control_Usuario {
 
     public static ArrayList<usuario> Usuarios = new ArrayList();
-
+    
     public static void RegistrarUsuario() {
         Scanner teclado = new Scanner(System.in);
         usuario persona = new usuario();
-        
-        usuario persona1 = new usuario();
-        persona1.setNombre("juan");
-        persona1.setApellido("cabarcas");
-        persona1.setTipodeidentificacion("cc");
-        persona1.setNumerodeidentificacion(100001);
-        persona1.setContraseña("juan1");
-        persona1.setId(01);
-        persona1.setRol("administrador");
-        Usuarios.add(persona1);
-        
+
         System.out.println("\n ----   Registro De Usuario ----\n");
         System.out.print("Ingrese su nombre: ");
         String nombre = teclado.nextLine();
@@ -67,15 +57,15 @@ public class control_Usuario {
             }
         }
         
-        if (credencialesCorrectas) 
+        if (credencialesCorrectas == true) 
         {
-            if ("ciudadano" == rol1) {
+            if ("ciudadano".equals(rol1)) {
                 MenuUsuario(usuario);
             }
-            if ("funcionario"== rol1) {
+            if ("funcionario".equals(rol1)) {
                 MenuFuncionario();
             }
-            if ("administrador"== rol1) {
+            if ("administrador".equals(rol1)) {
                 MenuAdministrador();
             }
         }
@@ -128,5 +118,13 @@ public class control_Usuario {
         System.out.print("**** Usuario Registrado ****\n"
                 + "Su usuario es: " + persona.getId() + "\n"
                 + "Su Contraseña es: " + persona.getContraseña() + "\n");
+    }
+    public static void usuarios_Registrados(){
+        int index = 1;
+        for (usuario i : Usuarios) {
+            System.out.println((index++)+": "+i.getNombre()+" "+i.getApellido()+" " + i.getTipodeidentificacion()+" "
+                    +i.getNumerodeidentificacion()+" "+i.getContraseña()+ " "+ i.getRol()+ " "+i.getId());
+            
+        }
     }
 }

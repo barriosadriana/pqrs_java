@@ -1,12 +1,16 @@
 package modelo.proyectodeaula.menus;
 
+
 import java.util.Scanner;
+import static modelo.proyectodeaula.Controladores.cargarUsuarios.cargarUsuarios;
 import static modelo.proyectodeaula.Controladores.control_Usuario.RegistrarUsuario;
 import static modelo.proyectodeaula.menus.inicioSesion.iniciosesion;
 
 public class menuPrincipal {
-
+        
+    
     public static void main(String[] args) {
+        cargarUsuarios();
         Scanner teclado = new Scanner(System.in);
         int opcion =0;    
         while(opcion < 3){
