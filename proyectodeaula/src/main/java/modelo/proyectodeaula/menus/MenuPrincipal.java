@@ -33,8 +33,7 @@ public class menuPrincipal {
                                      ****************************""");
                 }
             }
-        }
-        else{
+        } else {
             System.out.println("""
                                *************************************************
                                ----Ocurrio un error al leer la base de datos----
@@ -42,6 +41,5 @@ public class menuPrincipal {
                                *************************************************
                                """);
         }
-
     }
 }
