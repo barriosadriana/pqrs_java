@@ -27,14 +27,20 @@ public class menuPrincipal {
                 if (opcion == 2) {
                     iniciosesion();
                 } else {
-                    System.out.print("Finalizado con exito.");
+                    System.out.print("""
+                                     ****************************
+                                     ----Finalizado con exito----
+                                     ****************************""");
                 }
             }
         }
         else{
-            System.out.println("***********************************************");
-            System.out.println("----Ocurrio un error al leer el archivo----\n----No se pudo iniciar el programa.----");
-            System.out.print("***********************************************");
+            System.out.println("""
+                               *************************************************
+                               ----Ocurrio un error al leer la base de datos----
+                               ----        Finalizando programa             ----
+                               *************************************************
+                               """);
         }
 
     }
