@@ -8,7 +8,7 @@ import static modelo.proyectodeaula.Controladores.control_Usuario.Usuarios;
 
 public class cargarUsuarios {
 
-    public static void cargarUsuarios() {
+    public static boolean cargarUsuarios() {
         try {
             File usuarios = new File("C:\\repositorio\\pqrs_java\\proyectodeaula\\Usuarios_Creados.txt");
             Scanner scanner = new Scanner(usuarios);
@@ -39,7 +39,8 @@ public class cargarUsuarios {
             }
 
         } catch (FileNotFoundException ex) {
-            System.out.println("Ocurrio un error al leer archivo");
+            return false;
         }
+        return true;
     }
 }

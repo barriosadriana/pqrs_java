@@ -1,11 +1,13 @@
-C:\Users\Pc Master\Documents\NetBeansProjects\proyectodeaula\src\main\java\modelo\proyectodeaula\menus\menuAdministrador.java
-C:\Users\Pc Master\Documents\NetBeansProjects\proyectodeaula\src\main\java\modelo\proyectodeaula\Controladores\control_Usuario.java
-C:\Users\Pc Master\Documents\NetBeansProjects\proyectodeaula\src\main\java\modelo\proyectodeaula\Clases\usuario.java
-C:\Users\Pc Master\Documents\NetBeansProjects\proyectodeaula\src\main\java\modelo\proyectodeaula\Clases\solicitud.java
-C:\Users\Pc Master\Documents\NetBeansProjects\proyectodeaula\src\main\java\modelo\proyectodeaula\Controladores\control_Solicitud.java
-C:\Users\Pc Master\Documents\NetBeansProjects\proyectodeaula\src\main\java\modelo\proyectodeaula\menus\menuPrincipal.java
-C:\Users\Pc Master\Documents\NetBeansProjects\proyectodeaula\src\main\java\modelo\proyectodeaula\menus\menuUsuario.java
-C:\Users\Pc Master\Documents\NetBeansProjects\proyectodeaula\src\main\java\modelo\proyectodeaula\menus\inicioSesion.java
-C:\Users\Pc Master\Documents\NetBeansProjects\proyectodeaula\src\main\java\modelo\proyectodeaula\Clases\respuesta.java
-C:\Users\Pc Master\Documents\NetBeansProjects\proyectodeaula\src\main\java\modelo\proyectodeaula\Controladores\control_Respuesta.java
-C:\Users\Pc Master\Documents\NetBeansProjects\proyectodeaula\src\main\java\modelo\proyectodeaula\menus\menuFuncionario.java
+C:\repositorio\pqrs_java\proyectodeaula\src\main\java\modelo\proyectodeaula\Controladores\cargarUsuarios.java
+C:\repositorio\pqrs_java\proyectodeaula\src\main\java\modelo\proyectodeaula\menus\MenuAdministrador.java
+C:\repositorio\pqrs_java\proyectodeaula\src\main\java\modelo\proyectodeaula\menus\inicioSesion.java
+C:\repositorio\pqrs_java\proyectodeaula\src\main\java\modelo\proyectodeaula\menus\MenuFuncionario.java
+C:\repositorio\pqrs_java\proyectodeaula\src\main\java\modelo\proyectodeaula\Controladores\Control_Usuario.java
+C:\repositorio\pqrs_java\proyectodeaula\src\main\java\modelo\proyectodeaula\Controladores\control_Solicitud.java
+C:\repositorio\pqrs_java\proyectodeaula\src\main\java\modelo\proyectodeaula\menus\menuPrincipal.java
+C:\repositorio\pqrs_java\proyectodeaula\src\main\java\modelo\proyectodeaula\Clases\Usuario.java
+C:\repositorio\pqrs_java\proyectodeaula\src\main\java\modelo\proyectodeaula\datos\data.java
+C:\repositorio\pqrs_java\proyectodeaula\src\main\java\modelo\proyectodeaula\Clases\solicitud.java
+C:\repositorio\pqrs_java\proyectodeaula\src\main\java\modelo\proyectodeaula\Clases\respuesta.java
+C:\repositorio\pqrs_java\proyectodeaula\src\main\java\modelo\proyectodeaula\menus\MenuUsuario.java
+C:\repositorio\pqrs_java\proyectodeaula\src\main\java\modelo\proyectodeaula\Controladores\control_Respuesta.java
