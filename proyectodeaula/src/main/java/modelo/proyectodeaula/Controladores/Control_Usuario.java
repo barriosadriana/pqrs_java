@@ -2,19 +2,18 @@ package modelo.proyectodeaula.Controladores;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import modelo.proyectodeaula.Clases.usuario;
+import modelo.proyectodeaula.Clases.Usuario;
 import modelo.proyectodeaula.datos.data;
-import static modelo.proyectodeaula.menus.menuAdministrador.MenuAdministrador;
-import static modelo.proyectodeaula.menus.menuFuncionario.MenuFuncionario;
-import static modelo.proyectodeaula.menus.menuUsuario.MenuUsuario;
+import modelo.proyectodeaula.menus.MenuFuncionario;
+import modelo.proyectodeaula.menus.MenuUsuario;
 
-public class control_Usuario {
+public class Control_Usuario {
 
-    public static ArrayList<usuario> Usuarios = new ArrayList();
+    public static ArrayList<Usuario> Usuarios = new ArrayList();
     
     public static void RegistrarUsuario() {
         Scanner teclado = new Scanner(System.in);
-        usuario persona = new usuario();
+        Usuario persona = new Usuario();
 
         System.out.println("\n ----   Registro De Usuario ----\n");
         System.out.print("Ingrese su nombre: ");
@@ -49,24 +48,34 @@ public class control_Usuario {
         boolean credencialesCorrectas = false;
         String rol1 = "";
         
-        for (usuario i : Usuarios) {
+        //Buscar usuarios en el archivo
+        UsuarioController controlador=new UsuarioController();
+        Usuario currentUser = controlador.findUsuario(usuario, contraseña);
+        
+        if(currentUser!=null){
+            credencialesCorrectas = true;
+            rol1= currentUser.getRol();
+            data.Instanciar().setUsuarioLogueado(currentUser);
+        }
+        
+        /*for (Usuario i : usuarios) {
             if (i.getId() == usuario && i.getContraseña().equals(contraseña)) {
                 credencialesCorrectas = true;
                 rol1= i.getRol();
                 data.Instanciar().setUsuarioLogueado(i);
             }
-        }
+        }*/
         
         if (credencialesCorrectas == true) 
         {
             if ("ciudadano".equals(rol1)) {
-                MenuUsuario(usuario);
+                MenuUsuario.MenuUsuario(usuario);
             }
             if ("funcionario".equals(rol1)) {
-                MenuFuncionario();
+                MenuFuncionario.MenuFuncionario();
             }
             if ("administrador".equals(rol1)) {
-                MenuAdministrador();
+                //MenuAdministrador();
             }
         }
         else {
@@ -89,7 +98,7 @@ public class control_Usuario {
 
     public static void RegistrarUsuarioAdministrador() {
         Scanner teclado = new Scanner(System.in);
-        usuario persona = new usuario();
+        Usuario persona = new Usuario();
 
         System.out.println("\n ----   Registro De Usuario ----\n");
         System.out.print("Ingrese su nombre: ");
@@ -121,7 +130,7 @@ public class control_Usuario {
     }
     public static void usuarios_Registrados(){
         int index = 1;
-        for (usuario i : Usuarios) {
+        for (Usuario i : Usuarios) {
             System.out.println((index++)+": "+i.getNombre()+" "+i.getApellido()+" " + i.getTipodeidentificacion()+" "
                     +i.getNumerodeidentificacion()+" "+i.getContraseña()+ " "+ i.getRol()+ " "+i.getId());
             

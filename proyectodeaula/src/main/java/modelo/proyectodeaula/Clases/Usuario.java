@@ -1,7 +1,7 @@
 
 package modelo.proyectodeaula.Clases;
 
-public class usuario {
+public class Usuario {
     private String nombre;
     private String apellido;
     private String tipodeidentificacion;

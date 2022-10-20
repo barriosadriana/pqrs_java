@@ -5,7 +5,7 @@ import static modelo.proyectodeaula.Controladores.control_Solicitud.RegistroSoli
 import static modelo.proyectodeaula.Controladores.control_Solicitud.consultarEstado;
 import static modelo.proyectodeaula.Controladores.control_Solicitud.validarSolicitudes;
 
-public class menuUsuario {
+public class MenuUsuario {
 
     public static void MenuUsuario(int usuario) {
         Scanner teclado = new Scanner(System.in);

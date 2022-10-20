@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package modelo.proyectodeaula.datos;
-import modelo.proyectodeaula.Clases.usuario;
+import modelo.proyectodeaula.Clases.Usuario;
 
 /**
  *
@@ -11,7 +11,7 @@ import modelo.proyectodeaula.Clases.usuario;
  */
 public class data {
     
-    public usuario usuarioLogueado;
+    public Usuario usuarioLogueado;
     private static data _data;
     
     private data() {
@@ -29,11 +29,11 @@ public class data {
         }
     }
 
-    public usuario getUsuarioLogueado() {
+    public Usuario getUsuarioLogueado() {
         return usuarioLogueado;
     }
 
-    public void setUsuarioLogueado(usuario usuarioLogueado) {
+    public void setUsuarioLogueado(Usuario usuarioLogueado) {
         this.usuarioLogueado = usuarioLogueado;
     }
 }

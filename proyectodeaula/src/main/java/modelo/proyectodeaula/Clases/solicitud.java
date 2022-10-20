@@ -6,7 +6,7 @@ public class solicitud {
     private String descripcion;
     private String estado;
     private int radicado;
-    private usuario usuariosolicitud;
+    private Usuario usuariosolicitud;
     private String fecha;
 
     public void setTiposolicitud(int tiposolicitud) {
@@ -25,7 +25,7 @@ public class solicitud {
         this.radicado = radicado;
     }
 
-    public void setUsuariosolicitud(usuario usuariosolicitud) {
+    public void setUsuariosolicitud(Usuario usuariosolicitud) {
         this.usuariosolicitud = usuariosolicitud;
     }
 
@@ -49,7 +49,7 @@ public class solicitud {
         return radicado;
     }
 
-    public usuario getUsuariosolicitud() {
+    public Usuario getUsuariosolicitud() {
         return usuariosolicitud;
     }
 

@@ -2,22 +2,22 @@
 package modelo.proyectodeaula.menus;
 
 import java.util.Scanner;
-import static modelo.proyectodeaula.Controladores.control_Usuario.validarUsuario;
-import static modelo.proyectodeaula.Controladores.control_Usuario.validarUsuariosRegistrados;
+import modelo.proyectodeaula.Controladores.Control_Usuario;
 
 public class inicioSesion {
     public static void iniciosesion(){
+        
         Scanner teclado = new Scanner(System.in);
         int usuario=0;
         String contraseña="";
-        if (!validarUsuariosRegistrados()) {
+        if (!Control_Usuario.validarUsuariosRegistrados()) {
             System.out.println("\n----  Login   ----\n");
             System.out.print("Ingrese su usuario: ");
             usuario = teclado.nextInt();teclado.nextLine();
             System.out.print("Ingrese su contraseña: ");
             contraseña= teclado.nextLine();
             System.out.print("\n\n");
-            validarUsuario(usuario,contraseña);
+            Control_Usuario.validarUsuario(usuario,contraseña);
         }
         else{
             System.out.print("""

@@ -8,7 +8,7 @@ import static modelo.proyectodeaula.Controladores.control_Solicitud.reporteSolic
 import static modelo.proyectodeaula.Controladores.control_Solicitud.reporteSolicitudesTotal;
 import static modelo.proyectodeaula.Controladores.control_Solicitud.validarSolicitudes;
 
-public class menuFuncionario {
+public class MenuFuncionario {
 
     public static void MenuFuncionario() {
         Scanner teclado = new Scanner(System.in);

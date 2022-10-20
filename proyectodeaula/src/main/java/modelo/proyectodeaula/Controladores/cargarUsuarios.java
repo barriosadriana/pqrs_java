@@ -3,8 +3,7 @@ package modelo.proyectodeaula.Controladores;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
-import modelo.proyectodeaula.Clases.usuario;
-import static modelo.proyectodeaula.Controladores.control_Usuario.Usuarios;
+import modelo.proyectodeaula.Clases.Usuario;
 
 public class cargarUsuarios {
 
@@ -25,7 +24,7 @@ public class cargarUsuarios {
                 String rol = usuarios_creados[5];
                 String contraseña = usuarios_creados[6];
 
-                usuario persona = new usuario();
+                Usuario persona = new Usuario();
                 persona.setNombre(nombre);
                 persona.setApellido(apellido);
                 persona.setTipodeidentificacion(tipodeidentificacion);
@@ -34,7 +33,7 @@ public class cargarUsuarios {
                 persona.setRol(rol);
                 persona.setContraseña(contraseña);
 
-                Usuarios.add(persona);
+                Control_Usuario.Usuarios.add(persona);
 
             }
 

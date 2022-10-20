@@ -2,10 +2,9 @@ package modelo.proyectodeaula.menus;
 
 import java.util.Scanner;
 import static modelo.proyectodeaula.Controladores.cargarUsuarios.cargarUsuarios;
-import static modelo.proyectodeaula.Controladores.control_Usuario.RegistrarUsuario;
 import static modelo.proyectodeaula.menus.inicioSesion.iniciosesion;
 
-public class menuPrincipal {
+public class MenuPrincipal {
 
     public static void main(String[] args) {
         if (cargarUsuarios() == true) {
@@ -22,7 +21,7 @@ public class menuPrincipal {
                 System.out.print("Ingrese su opcion: ");
                 opcion = teclado.nextInt();
                 if (opcion == 1) {
-                    RegistrarUsuario();
+                    //RegistrarUsuario();
                 }
                 if (opcion == 2) {
                     iniciosesion();

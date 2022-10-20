@@ -6,9 +6,8 @@ import static modelo.proyectodeaula.Controladores.control_Solicitud.reporteSolic
 import static modelo.proyectodeaula.Controladores.control_Solicitud.reporteSolicitudesResueltas;
 import static modelo.proyectodeaula.Controladores.control_Solicitud.reporteSolicitudesTotal;
 import static modelo.proyectodeaula.Controladores.control_Solicitud.validarSolicitudes;
-import static modelo.proyectodeaula.Controladores.control_Usuario.RegistrarUsuarioAdministrador;
 
-public class menuAdministrador {
+public class MenuAdministrador {
 
     public static void MenuAdministrador() {
         Scanner teclado = new Scanner(System.in);
@@ -24,7 +23,7 @@ public class menuAdministrador {
             System.out.print("Ingrese la opcion: ");
             opcion = teclado.nextInt();
             if (opcion == 1) {
-                RegistrarUsuarioAdministrador();
+                //RegistrarUsuarioAdministrador();
             }
             if (opcion == 2) {
                 if (validarSolicitudes() == true) {
