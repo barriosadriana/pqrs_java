@@ -4,7 +4,7 @@ package modelo.proyectodeaula.menus;
 import java.util.Scanner;
 import modelo.proyectodeaula.Controladores.Control_Usuario;
 
-public class inicioSesion {
+public class MenuInicioSesion {
     public static void iniciosesion(){
         
         Scanner teclado = new Scanner(System.in);

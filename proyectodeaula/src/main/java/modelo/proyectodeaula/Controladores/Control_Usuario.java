@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import modelo.proyectodeaula.Clases.Usuario;
 import modelo.proyectodeaula.datos.data;
+import modelo.proyectodeaula.menus.MenuAdministrador;
 import modelo.proyectodeaula.menus.MenuFuncionario;
 import modelo.proyectodeaula.menus.MenuUsuario;
 
@@ -75,7 +76,7 @@ public class Control_Usuario {
                 MenuFuncionario.MenuFuncionario();
             }
             if ("administrador".equals(rol1)) {
-                //MenuAdministrador();
+                MenuAdministrador.MenuAdministrador();
             }
         }
         else {
@@ -89,7 +90,9 @@ public class Control_Usuario {
     }
 
     public static boolean validarUsuariosRegistrados() {
-        if (Usuarios.size() == 0) {
+        UsuarioController controlador=new UsuarioController();
+        
+        if (controlador.getUsuarios().size() == 0) {
             return true;
         } else {
             return false;
@@ -129,8 +132,9 @@ public class Control_Usuario {
                 + "Su Contraseña es: " + persona.getContraseña() + "\n");
     }
     public static void usuarios_Registrados(){
+        UsuarioController userController=new UsuarioController();
         int index = 1;
-        for (Usuario i : Usuarios) {
+        for (Usuario i : userController.getUsuarios()) {
             System.out.println((index++)+": "+i.getNombre()+" "+i.getApellido()+" " + i.getTipodeidentificacion()+" "
                     +i.getNumerodeidentificacion()+" "+i.getContraseña()+ " "+ i.getRol()+ " "+i.getId());
             

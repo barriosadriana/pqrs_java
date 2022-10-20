@@ -2,7 +2,7 @@ package modelo.proyectodeaula.menus;
 
 import java.util.Scanner;
 import static modelo.proyectodeaula.Controladores.cargarUsuarios.cargarUsuarios;
-import static modelo.proyectodeaula.menus.inicioSesion.iniciosesion;
+import static modelo.proyectodeaula.menus.MenuInicioSesion.iniciosesion;
 
 public class MenuPrincipal {
 
