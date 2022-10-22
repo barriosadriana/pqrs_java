@@ -1,44 +1,33 @@
 package modelo.proyectodeaula.menus;
 
 import java.util.Scanner;
-import static modelo.proyectodeaula.Controladores.cargarUsuarios.cargarUsuarios;
-import static modelo.proyectodeaula.menus.MenuInicioSesion.iniciosesion;
+import modelo.proyectodeaula.Controladores.UsuarioController;
 
 public class MenuPrincipal {
 
     public static void main(String[] args) {
-        if (cargarUsuarios() == true) {
-            Scanner teclado = new Scanner(System.in);
-            int opcion = 0;
-            while (opcion < 3) {
-                System.out.println("""
+        Scanner teclado = new Scanner(System.in);
+        UsuarioController user = new UsuarioController();
+        int opcion = 0;
+        do{
+            System.out.println("""
                            ***********************
                            ---- Menu Principal ----
                            1: Registrar Usuario
                            2: Iniciar   Seccion
                            3: Salir
                            ***********************\n""");
-                System.out.print("Ingrese su opcion: ");
-                opcion = teclado.nextInt();
-                if (opcion == 1) {
-                    //RegistrarUsuario();
-                }
-                if (opcion == 2) {
-                    iniciosesion();
-                } else {
-                    System.out.print("""
-                                     ****************************
-                                     ----Finalizado con exito----
-                                     ****************************""");
-                }
-            }
-        } else {
-            System.out.println("""
-                               *************************************************
-                               ----Ocurrio un error al leer la base de datos----
-                               ----        Finalizando programa             ----
-                               *************************************************
-                               """);
-        }
+            System.out.print("Ingrese su opcion: ");
+            opcion = teclado.nextInt();
+            switch (opcion) {
+                case 1 ->
+                    user.registerUsuario();
+                case 2 ->
+                    MenuInicioSesion.iniciosesion();
+                case 3 ->
+                    System.out.println("Finalizado Con Exito");
+                default ->
+                    System.out.println("Opcion invalida");}
+        }while(opcion >3);
     }
 }

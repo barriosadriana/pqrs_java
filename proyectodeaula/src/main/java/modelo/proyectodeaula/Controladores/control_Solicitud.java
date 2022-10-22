@@ -2,21 +2,23 @@ package modelo.proyectodeaula.Controladores;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import modelo.proyectodeaula.Clases.solicitud;
+import modelo.proyectodeaula.Clases.Solicitud;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import static modelo.proyectodeaula.Controladores.control_Respuesta.mostrarRespuesta;
 import modelo.proyectodeaula.datos.data;
 
-public class control_Solicitud {
+public class Control_Solicitud {
 
-    public static ArrayList<solicitud> Solicitudes = new ArrayList();
-
-    public static void RegistroSolicitud() {
+    public ArrayList<Solicitud> getSolicitud(){
+        ArrayList<Solicitud> solicitudes = new ArrayList<Solicitud>();
+        return solicitudes;
+    }
+    public  void RegistroSolicitud() {
+        ArrayList<Solicitud> solicitudes = this.getSolicitud();
         Scanner teclado = new Scanner(System.in);
-        solicitud objeto1 = new solicitud();
-        String fecha = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
-
+        Solicitud objeto1 = new Solicitud();
+        String fecha = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss")
+        .format(Calendar.getInstance().getTime());
         System.out.println("\n ----   Registro De Solicitudes ----\n");
         System.out.print("""
                          ----Indique el tipo de solicitud----
@@ -38,7 +40,7 @@ public class control_Solicitud {
         objeto1.setRadicado(random);
         objeto1.setUsuariosolicitud(data.Instanciar().getUsuarioLogueado());
         objeto1.setFecha(fecha);
-        Solicitudes.add(objeto1);
+        solicitudes.add(objeto1);
         System.out.print("""
                          
                          -------------------------------------------
@@ -50,15 +52,17 @@ public class control_Solicitud {
 
     }
 
-    public static void consultarEstado(int radicado) {
-        for (solicitud i : Solicitudes) {
+    public  void consultarEstado(int radicado) {
+        Control_Respuesta resp = new Control_Respuesta();
+        ArrayList<Solicitud> solicitudes = this.getSolicitud();
+        for (Solicitud i : solicitudes) {
             if (i.getRadicado() == radicado) {
                 System.out.println("\n\nTipo Solicitud: "
                         + tiposdesolicitud(i.getTiposolicitud())
                         + "\n" + "Descripcion: " + i.getDescripcion() + "\n"
                         + "Estado: " + i.getEstado() + "\n" + "Fecha de creacion: "
                         + i.getFecha() + "\n");
-                mostrarRespuesta(i.getRadicado());
+                resp.mostrarRespuesta(i.getRadicado());
             }
         }
     }
@@ -79,23 +83,41 @@ public class control_Solicitud {
         return null;
     }
 
-    public static boolean validarSolicitudes() {
-        if (Solicitudes.size() == 0) {
+    public boolean validarSolicitudes() {
+        ArrayList<Solicitud> solicitudes = this.getSolicitud();
+        if (solicitudes.size() == 0) {
             return true;
         } else {
             return false;
         }
     }
+    public void consultarSolicitud(int opcion){
+        Control_Solicitud control = new Control_Solicitud();
+        Scanner teclado = new Scanner(System.in);
+        if (opcion == 2) {
+                if (control.validarSolicitudes() == true) {
+                    System.out.print("\nNo hay solicitudes registradas");
+                    System.out.print("\n");
+                } else {
+                    System.out.print("Ingrese el numero de radicado: ");
+                    int radicado = teclado.nextInt();
+                    control.consultarEstado(radicado);
+                }
+            }
+    }
 
-    public static void consultarSolicitudes() {
-        for (solicitud i : Solicitudes) {
+    public void consultarSolicitudes() {
+        ArrayList<Solicitud> solicitudes = this.getSolicitud();
+        for (Solicitud i : solicitudes) {
             if ("pendiente".equals(i.getEstado())) {
                 System.out.print(
                         "--------------------------------------------------------"
                         + "\n" + "Nombres: " + i.getUsuariosolicitud().getNombre()
                         + "\n" + "Apellidos: " + i.getUsuariosolicitud().getApellido()
-                        + "\n" + "Tipo de documento: " + i.getUsuariosolicitud().getTipodeidentificacion()
-                        + "\n" + "Numero de identificacion: " + i.getUsuariosolicitud().getNumerodeidentificacion()
+                        + "\n" + "Tipo de documento: " 
+                        + i.getUsuariosolicitud().getTipodeidentificacion()
+                        + "\n" + "Numero de identificacion: " 
+                        + i.getUsuariosolicitud().getNumerodeidentificacion()
                         + "\n" + "Tipo Solicitud: " + tiposdesolicitud(i.getTiposolicitud())
                         + "\n" + "Descripcion: " + i.getDescripcion()
                         + "\n" + "Estado: " + i.getEstado()
@@ -107,33 +129,40 @@ public class control_Solicitud {
 
     }
 
-    public static void actualizarEstadoRespuesta(int radicado) {
-        for (solicitud i : Solicitudes) {
+    public void actualizarEstadoRespuesta(int radicado) {
+        ArrayList<Solicitud> solicitudes = this.getSolicitud();
+        for (Solicitud i : solicitudes) {
             if (radicado == i.getRadicado()) {
                 i.setEstado("resuelta");
             }
         }
     }
-    public static void reporteSolicitudesPendientes(){
-        int solicitudespendientes=0;
-        for (solicitud i : Solicitudes){
-            if(i.getEstado() == "pendiente"){
+
+    public void reporteSolicitudesPendientes() {
+        ArrayList<Solicitud> solicitudes = this.getSolicitud();
+        int solicitudespendientes = 0;
+        for (Solicitud i : solicitudes) {
+            if (i.getEstado() == "pendiente") {
                 solicitudespendientes++;
             }
-            System.out.print("Las solicitudes pendientes son: "+solicitudespendientes);
+            System.out.print("Las solicitudes pendientes son: " + solicitudespendientes);
         }
     }
-    public static void reporteSolicitudesResueltas(){
-        int solicitudesresueltas=0;
-        for (solicitud i : Solicitudes){
-            if(i.getEstado() == "resuelta"){
+
+    public void reporteSolicitudesResueltas() {
+        ArrayList<Solicitud> solicitudes = this.getSolicitud();
+        int solicitudesresueltas = 0;
+        for (Solicitud i : solicitudes) {
+            if (i.getEstado() == "resuelta") {
                 solicitudesresueltas++;
             }
-            System.out.print("Las solicitudes resueltas son: "+solicitudesresueltas);
+            System.out.print("Las solicitudes resueltas son: " + solicitudesresueltas);
         }
     }
-    public static void reporteSolicitudesTotal(){
-        System.out.print("El total de las solicitudes son: "+Solicitudes.size());
-        
+
+    public void reporteSolicitudesTotal() {
+        ArrayList<Solicitud> solicitudes = this.getSolicitud();
+        System.out.print("El total de las solicitudes son: " + solicitudes.size());
+
     }
 }

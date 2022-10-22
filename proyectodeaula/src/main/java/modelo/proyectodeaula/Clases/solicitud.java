@@ -1,7 +1,7 @@
 
 package modelo.proyectodeaula.Clases;
 
-public class solicitud {
+public class Solicitud {
     private int tiposolicitud;
     private String descripcion;
     private String estado;

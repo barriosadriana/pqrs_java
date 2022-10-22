@@ -1,15 +1,15 @@
 package modelo.proyectodeaula.menus;
 
 import java.util.Scanner;
-import static modelo.proyectodeaula.Controladores.control_Solicitud.consultarSolicitudes;
-import static modelo.proyectodeaula.Controladores.control_Solicitud.reporteSolicitudesPendientes;
-import static modelo.proyectodeaula.Controladores.control_Solicitud.reporteSolicitudesResueltas;
-import static modelo.proyectodeaula.Controladores.control_Solicitud.reporteSolicitudesTotal;
-import static modelo.proyectodeaula.Controladores.control_Solicitud.validarSolicitudes;
+import modelo.proyectodeaula.Controladores.Control_Solicitud;
+import modelo.proyectodeaula.Controladores.UsuarioController;
+
 
 public class MenuAdministrador {
 
     public static void MenuAdministrador() {
+        Control_Solicitud control = new Control_Solicitud();
+        UsuarioController user = new UsuarioController();
         Scanner teclado = new Scanner(System.in);
         int opcion = 0;
         while (opcion < 4) {
@@ -23,14 +23,14 @@ public class MenuAdministrador {
             System.out.print("Ingrese la opcion: ");
             opcion = teclado.nextInt();
             if (opcion == 1) {
-                //RegistrarUsuarioAdministrador();
+                user.RegistrarUsuarioAdministrador();
             }
             if (opcion == 2) {
-                if (validarSolicitudes() == true) {
+                if (control.validarSolicitudes() == true) {
                     System.out.print("\nNo hay solicitudes registradas");
                     System.out.print("\n");
                 } else {
-                    consultarSolicitudes();
+                    control.consultarSolicitudes();
                 }
             }
             if (opcion == 3) {
@@ -45,13 +45,13 @@ public class MenuAdministrador {
                 System.out.print("Opcion: ");
                 int opciones = teclado.nextInt();
                 if (opciones == 1) {
-                    reporteSolicitudesPendientes();
+                    control.reporteSolicitudesPendientes();
                 }
                 if (opciones == 2) {
-                    reporteSolicitudesResueltas();
+                    control.reporteSolicitudesResueltas();
                 }
                 if (opciones == 3) {
-                    reporteSolicitudesTotal();
+                    control.reporteSolicitudesTotal();
                 }
             }
         }

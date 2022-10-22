@@ -1,13 +1,12 @@
 package modelo.proyectodeaula.menus;
 
 import java.util.Scanner;
-import static modelo.proyectodeaula.Controladores.control_Solicitud.RegistroSolicitud;
-import static modelo.proyectodeaula.Controladores.control_Solicitud.consultarEstado;
-import static modelo.proyectodeaula.Controladores.control_Solicitud.validarSolicitudes;
+import modelo.proyectodeaula.Controladores.Control_Solicitud;
 
 public class MenuUsuario {
 
     public static void MenuUsuario(int usuario) {
+        Control_Solicitud control = new Control_Solicitud();
         Scanner teclado = new Scanner(System.in);
         int opcion = 0;
         while (opcion < 3) {
@@ -22,19 +21,17 @@ public class MenuUsuario {
                            *************************\n""");
             System.out.print("Ingrese su opcion: ");
             opcion = teclado.nextInt();
-            if (opcion == 1) {
-                RegistroSolicitud();
+            switch (opcion) {
+                case 1 ->
+                    control.RegistroSolicitud();
+                case 2 ->
+                    control.consultarSolicitud(opcion);
+                case 3 ->
+                    System.out.print("Finalizado con exito");
+                default ->
+                    System.out.print("----Opcion Incorrecta----");
             }
-            if (opcion == 2) {
-                if (validarSolicitudes() == true) {
-                    System.out.print("\nNo hay solicitudes registradas");
-                    System.out.print("\n");
-                } else {
-                    System.out.print("Ingrese el numero de radicado: ");
-                    int radicado = teclado.nextInt();
-                    consultarEstado(radicado);
-                }
-            }
+            opcion=0;
         }
     }
 }

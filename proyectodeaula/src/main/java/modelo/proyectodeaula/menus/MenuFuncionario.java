@@ -1,19 +1,15 @@
 package modelo.proyectodeaula.menus;
 
 import java.util.Scanner;
-import static modelo.proyectodeaula.Controladores.control_Respuesta.registroRespuesta;
-import static modelo.proyectodeaula.Controladores.control_Solicitud.consultarSolicitudes;
-import static modelo.proyectodeaula.Controladores.control_Solicitud.reporteSolicitudesPendientes;
-import static modelo.proyectodeaula.Controladores.control_Solicitud.reporteSolicitudesResueltas;
-import static modelo.proyectodeaula.Controladores.control_Solicitud.reporteSolicitudesTotal;
-import static modelo.proyectodeaula.Controladores.control_Solicitud.validarSolicitudes;
+import modelo.proyectodeaula.Controladores.UsuarioController;
 
 public class MenuFuncionario {
 
     public static void MenuFuncionario() {
+        UsuarioController menu = new UsuarioController();
         Scanner teclado = new Scanner(System.in);
         int opcion = 0;
-        while (opcion < 3) {
+        do {
             System.out.println("""
                            **************************
                            1: Mostrar   Solicitudes
@@ -23,43 +19,19 @@ public class MenuFuncionario {
                            **************************""");
             System.out.print("opcion: ");
             opcion = teclado.nextInt();
-            if (opcion == 1) {
-                if (validarSolicitudes() == true) {
-                    System.out.print("\nNo hay solicitudes registradas");
-                    System.out.print("\n");
-                } else {
-                    consultarSolicitudes();
-                }
+            switch (opcion) {
+                case 1 ->
+                    menu.mostrarSolicitudes(opcion);
+                case 2 ->
+                    menu.responderSolicitudes(opcion);
+                case 3 ->
+                    menu.mostrarReportes(opcion);
+                case 4 ->
+                    System.out.println("----Finalizado con exito----");
+                default ->
+                    System.out.println("----Opcion Incorrecta----");
             }
-            if (opcion == 2) {
-                if (validarSolicitudes() == true) {
-                    System.out.print("\nNo hay solicitudes registradas");
-                    System.out.print("\n");
-                } else {
-                    registroRespuesta();
-                }
-            }
-            if (opcion == 3) {
-                System.out.print("""
-                               ------Indique que reporte desea------
-                             
-                             1: Numero total de solicitudes pendientes.
-                             2: Numero total de solicitudes resueltas.
-                             3: Numero total de solicitudes ingresadas al sistema.
-                             
-                             """);
-                System.out.print("Opcion: ");
-                int opciones = teclado.nextInt();
-                if (opciones == 1) {
-                    reporteSolicitudesPendientes();
-                }
-                if (opciones == 2) {
-                    reporteSolicitudesResueltas();
-                }
-                if (opciones == 3) {
-                    reporteSolicitudesTotal();
-                }
-            }
-        }
+
+        } while (opcion < 3);
     }
 }

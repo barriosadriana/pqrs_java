@@ -4,18 +4,20 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Scanner;
-import modelo.proyectodeaula.Clases.respuesta;
-import static modelo.proyectodeaula.Controladores.control_Solicitud.actualizarEstadoRespuesta;
+import modelo.proyectodeaula.Clases.Respuesta;
 
-public class control_Respuesta {
+public class Control_Respuesta {
 
-    public static ArrayList<respuesta> Respuestas = new ArrayList();
-
-    public static void registroRespuesta() {
+    public ArrayList<Respuesta> getRespuesta() {
+        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+        return respuestas;
+    }
+    public void registroRespuesta() {
+        Control_Solicitud control = new Control_Solicitud();
+        ArrayList<Respuesta> respuestas = this.getRespuesta();
         Scanner teclado = new Scanner(System.in);
         String fecha = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
-        respuesta objeto1 = new respuesta();
-
+        Respuesta objeto1 = new Respuesta();
         System.out.println("-------------------\n");
         System.out.print("Ingrese el numero de radicado a responder: ");
         int radicado = teclado.nextInt();
@@ -28,17 +30,18 @@ public class control_Respuesta {
         String funcionario = teclado.nextLine();
         objeto1.setFuncionario(funcionario);
         objeto1.setFecha(fecha);
-        Respuestas.add(objeto1);
-        actualizarEstadoRespuesta(radicado);
+        respuestas.add(objeto1);
+        control.actualizarEstadoRespuesta(radicado);
 
     }
 
-    public static void mostrarRespuesta(int radicado) {
+    public void mostrarRespuesta(int radicado) {
+        ArrayList<Respuesta> respuestas = this.getRespuesta();
         if (validarRespuestas() == true) {
             System.out.print("----No hay respuestas disponibles----");
             System.out.print("\n\n");
         } else {
-            for (respuesta i : Respuestas) {
+            for (Respuesta i : respuestas) {
                 if (i.getRadicado() == radicado) {
                     System.out.print("Respuesta: " + i.getRespuesta() + "\n\n");
                 }
@@ -46,8 +49,9 @@ public class control_Respuesta {
         }
     }
 
-    public static boolean validarRespuestas() {
-        if (Respuestas.size() == 0) {
+    public boolean validarRespuestas() {
+        ArrayList<Respuesta> respuestas = this.getRespuesta();
+        if (respuestas.size() == 0) {
             return true;
         } else {
             return false;

@@ -1,7 +1,7 @@
 
 package modelo.proyectodeaula.Clases;
 
-public class respuesta {
+public class Respuesta {
     private int radicado;
     private String respuesta;
     private String funcionario;
