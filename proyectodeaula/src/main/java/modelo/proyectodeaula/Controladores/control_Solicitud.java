@@ -9,16 +9,26 @@ import modelo.proyectodeaula.datos.data;
 
 public class Control_Solicitud {
 
-    public ArrayList<Solicitud> getSolicitud(){
+    /**
+     * metodo donde se crea el ArrayList y este mismo se retorna
+     *
+     * @return solicitudes
+     */
+    public ArrayList<Solicitud> getSolicitud() {
         ArrayList<Solicitud> solicitudes = new ArrayList<Solicitud>();
         return solicitudes;
     }
-    public  void RegistroSolicitud() {
+
+    /**
+     * metodo para registrar una solicitud de un ciudadano
+     */
+
+    public void RegistroSolicitud() {
         ArrayList<Solicitud> solicitudes = this.getSolicitud();
         Scanner teclado = new Scanner(System.in);
         Solicitud objeto1 = new Solicitud();
         String fecha = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss")
-        .format(Calendar.getInstance().getTime());
+                .format(Calendar.getInstance().getTime());
         System.out.println("\n ----   Registro De Solicitudes ----\n");
         System.out.print("""
                          ----Indique el tipo de solicitud----
@@ -52,7 +62,16 @@ public class Control_Solicitud {
 
     }
 
-    public  void consultarEstado(int radicado) {
+    /**
+     * metodo para consultar el estado de la solicitud el cual les muestra todos
+     * los datos de la solicitud registrada y el estado de esta misma
+     *
+     * requiere como parametro
+     *
+     * @param radicado (el numero de radicado generado cuando se registro la
+     * solicitud)
+     */
+    public void consultarEstado(int radicado) {
         Control_Respuesta resp = new Control_Respuesta();
         ArrayList<Solicitud> solicitudes = this.getSolicitud();
         for (Solicitud i : solicitudes) {
@@ -67,6 +86,15 @@ public class Control_Solicitud {
         }
     }
 
+    /**
+     * metodo para retornar los diferentes tipos de solicitud se requiere como
+     * parametro
+     *
+     * @param tiposolicitud ( la cual se digita al momento de registrar la
+     * solicitud)
+     * @return si es peticion, queja, reclamo o sugerencia, si no es ninguna
+     * retorna null
+     */
     public static String tiposdesolicitud(int tiposolicitud) {
         if (tiposolicitud == 1) {
             return "Peticion";
@@ -83,6 +111,12 @@ public class Control_Solicitud {
         return null;
     }
 
+    /**
+     * metodo para verificar si el ArrayList de solicitudes tiene datos o esta
+     * vacio dependiendo de esto retorna si tiene datos o no
+     *
+     * @return true ( si este esta vacio si tiene datos retorna un false)
+     */
     public boolean validarSolicitudes() {
         ArrayList<Solicitud> solicitudes = this.getSolicitud();
         if (solicitudes.size() == 0) {
@@ -91,22 +125,39 @@ public class Control_Solicitud {
             return false;
         }
     }
-    public void consultarSolicitud(int opcion){
+
+    /**
+     * este metodo funciona para consultar la solicitud registrada previamente
+     * en el sistema primero valida si hay solicitudes registradas( si no hay
+     * imprime que no hay solicitudes registradas) si tiene solicitudes
+     * registradas le pide como parametro el numero de radicado para validar
+     * esta misma
+     *
+     *
+     * requiere como parametros para funcionar
+     *
+     * @param opcion (la cual se digita en el menu)
+     */
+    public void consultarSolicitud(int opcion) {
         Control_Solicitud control = new Control_Solicitud();
         Scanner teclado = new Scanner(System.in);
         if (opcion == 2) {
-                if (control.validarSolicitudes() == true) {
-                    System.out.print("\nNo hay solicitudes registradas");
-                    System.out.print("\n");
-                } else {
-                    System.out.print("Ingrese el numero de radicado: ");
-                    int radicado = teclado.nextInt();
-                    control.consultarEstado(radicado);
-                }
+            if (control.validarSolicitudes() == true) {
+                System.out.print("\nNo hay solicitudes registradas");
+                System.out.print("\n");
+            } else {
+                System.out.print("Ingrese el numero de radicado: ");
+                int radicado = teclado.nextInt();
+                control.consultarEstado(radicado);
             }
+        }
     }
 
-    public void consultarSolicitudes() {
+    /**
+     * metodo para mostrar solicitudes en estado pendiente imprime datos en
+     * especificos de los ArrayList
+     */
+    public void mostrarSolicitudes() {
         ArrayList<Solicitud> solicitudes = this.getSolicitud();
         for (Solicitud i : solicitudes) {
             if ("pendiente".equals(i.getEstado())) {
@@ -114,9 +165,9 @@ public class Control_Solicitud {
                         "--------------------------------------------------------"
                         + "\n" + "Nombres: " + i.getUsuariosolicitud().getNombre()
                         + "\n" + "Apellidos: " + i.getUsuariosolicitud().getApellido()
-                        + "\n" + "Tipo de documento: " 
+                        + "\n" + "Tipo de documento: "
                         + i.getUsuariosolicitud().getTipodeidentificacion()
-                        + "\n" + "Numero de identificacion: " 
+                        + "\n" + "Numero de identificacion: "
                         + i.getUsuariosolicitud().getNumerodeidentificacion()
                         + "\n" + "Tipo Solicitud: " + tiposdesolicitud(i.getTiposolicitud())
                         + "\n" + "Descripcion: " + i.getDescripcion()
@@ -129,6 +180,9 @@ public class Control_Solicitud {
 
     }
 
+    /*
+    metodo para actualizar el estado de la solicitud de pendiente a resuelta
+     */
     public void actualizarEstadoRespuesta(int radicado) {
         ArrayList<Solicitud> solicitudes = this.getSolicitud();
         for (Solicitud i : solicitudes) {
@@ -138,6 +192,9 @@ public class Control_Solicitud {
         }
     }
 
+    /*
+    metodo para decir cuantas solicitudes pendientes existen
+     */
     public void reporteSolicitudesPendientes() {
         ArrayList<Solicitud> solicitudes = this.getSolicitud();
         int solicitudespendientes = 0;
@@ -149,6 +206,9 @@ public class Control_Solicitud {
         }
     }
 
+    /*
+    metodo para decir cuantas solicitudes resueltas existen
+     */
     public void reporteSolicitudesResueltas() {
         ArrayList<Solicitud> solicitudes = this.getSolicitud();
         int solicitudesresueltas = 0;
@@ -160,6 +220,9 @@ public class Control_Solicitud {
         }
     }
 
+    /*
+    metodo para imprimir cuantas solicitudes en estado pendiente y resueltas existen.
+     */
     public void reporteSolicitudesTotal() {
         ArrayList<Solicitud> solicitudes = this.getSolicitud();
         System.out.print("El total de las solicitudes son: " + solicitudes.size());

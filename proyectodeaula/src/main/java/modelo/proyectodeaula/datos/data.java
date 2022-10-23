@@ -1,14 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package modelo.proyectodeaula.datos;
 import modelo.proyectodeaula.Clases.Usuario;
 
-/**
- *
- * @author Pc Master
- */
 public class data {
     
     public Usuario usuarioLogueado;

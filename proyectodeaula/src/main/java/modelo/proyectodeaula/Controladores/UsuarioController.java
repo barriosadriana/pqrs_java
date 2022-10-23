@@ -85,6 +85,9 @@ public class UsuarioController {
         return usuarios;
     }
 
+    /**
+     * Metodo para registrar un usuario.
+     */
     public void registerUsuario() {
         ArrayList<Usuario> usuarios = this.getUsuarios();
         Usuario user = new Usuario();
@@ -116,6 +119,15 @@ public class UsuarioController {
                 + "Su Contraseña es: " + user.getContraseña() + "\n\n");
     }
 
+    /**
+     * Metodo para validar las credenciales del usuario y dependiendo del tipo
+     * de usuario se le desplega el tipo de menu que requiere.
+     *
+     * Se requiere como parametro
+     *
+     * @param int usuario (el id del usuario con el cual inicia sesion)
+     * @param String contraseña ( la contraseña registrada en el sistema)
+     */
     public static void validarUsuario(int usuario, String contraseña) {
         boolean credencialesCorrectas = false;
         String rol1 = "";
@@ -146,6 +158,10 @@ public class UsuarioController {
 
     }
 
+    /**
+     * metodo para validar si el ArrayList de usuarios se encuentra vacio o con
+     * datos Si esta vacio retorna un True Si tiene datos retorna un False
+     */
     public static boolean validarUsuariosRegistrados() {
         UsuarioController controlador = new UsuarioController();
 
@@ -156,6 +172,10 @@ public class UsuarioController {
         }
     }
 
+    /**
+     * metodo para registrar usuarios desde el menu administrador donde este
+     * puede digitar el rol del cual pertenece el usuario
+     */
     public void RegistrarUsuarioAdministrador() {
         ArrayList<Usuario> usuarios = this.getUsuarios();
         Scanner teclado = new Scanner(System.in);
@@ -189,6 +209,10 @@ public class UsuarioController {
                 + "Su Contraseña es: " + user.getContraseña() + "\n");
     }
 
+    /**
+     * metodo para listar los usuarios registrados retorna los valores guardados
+     * en el ArrayList usuario
+     */
     public static void usuarios_Registrados() {
         UsuarioController userController = new UsuarioController();
         int index = 1;
@@ -201,16 +225,37 @@ public class UsuarioController {
         }
     }
 
+    /**
+     * metodo para mostrar las solicitudes registradas este primero verifica si
+     * el ArrayList de solicitudes este vacio o tiene datos si esta vacia
+     * imprime que no hay solicitudes registradas si tiene datos muestra las
+     * solicitudes pendientes
+     *
+     *
+     * requiere como parametro
+     *
+     * @param opcion (la cual se digita en el menu)
+     */
     public void mostrarSolicitudes(int opcion) {
         Control_Solicitud control = new Control_Solicitud();
         if (control.validarSolicitudes() == true) {
             System.out.print("\nNo hay solicitudes registradas");
             System.out.print("\n");
         } else {
-            control.consultarSolicitudes();
+            control.mostrarSolicitudes();
         }
     }
 
+    /**
+     * metodo para responder las solicitudes pendientes
+     * este primero verifica si el ArrayList de solicitudes este vacio o tiene
+     * datos si esta vacia imprime que no hay solicitudes registradas si tiene
+     * datos ejecuta el metodo de registrar la respuesta
+     *
+     * requiere como parametro
+     *
+     * @param opcion (la cual se digita en el menu)
+     */
     public void responderSolicitudes(int opcion) {
         Control_Solicitud control = new Control_Solicitud();
         Control_Respuesta resp = new Control_Respuesta();
@@ -222,6 +267,14 @@ public class UsuarioController {
         }
     }
 
+    /**
+     * metodo para mostrar menu de Reportes
+     * deoendiendo de la opcion que escogas te imprimira el 
+     * reporte que solicitas
+     * 
+     * requiere como parametro 
+     * @param opcion (la cual se digita en el menu)
+     */
     public void mostrarReportes(int opcion) {
         Control_Solicitud control = new Control_Solicitud();
         Scanner teclado = new Scanner(System.in);

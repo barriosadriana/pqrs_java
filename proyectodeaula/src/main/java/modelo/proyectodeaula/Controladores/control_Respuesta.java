@@ -8,10 +8,19 @@ import modelo.proyectodeaula.Clases.Respuesta;
 
 public class Control_Respuesta {
 
+    /**
+     * metodo para crear el ArrayList respuestas y retornar este mismo
+     *
+     * @return respuestas
+     */
     public ArrayList<Respuesta> getRespuesta() {
         ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
         return respuestas;
     }
+
+    /**
+     * metodo para registrar una respuesta de una solicitud
+     */
     public void registroRespuesta() {
         Control_Solicitud control = new Control_Solicitud();
         ArrayList<Respuesta> respuestas = this.getRespuesta();
@@ -35,6 +44,12 @@ public class Control_Respuesta {
 
     }
 
+    /**
+     * metodo para mostrar la respuesta deseada este metodo primero valida si
+     * hay respuestas creadas requiere como parametro
+     *
+     * @param radicado ( el cual se digita en el menu)
+     */
     public void mostrarRespuesta(int radicado) {
         ArrayList<Respuesta> respuestas = this.getRespuesta();
         if (validarRespuestas() == true) {
@@ -49,6 +64,11 @@ public class Control_Respuesta {
         }
     }
 
+    /**
+     * metodo para validar si el ArrayList respuestas tiene datos o no
+     *
+     * @return true o false dependiendo si tiene datos o no
+     */
     public boolean validarRespuestas() {
         ArrayList<Respuesta> respuestas = this.getRespuesta();
         if (respuestas.size() == 0) {

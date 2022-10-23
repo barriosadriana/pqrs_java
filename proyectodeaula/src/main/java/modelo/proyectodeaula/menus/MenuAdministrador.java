@@ -30,7 +30,7 @@ public class MenuAdministrador {
                     System.out.print("\nNo hay solicitudes registradas");
                     System.out.print("\n");
                 } else {
-                    control.consultarSolicitudes();
+                    control.mostrarSolicitudes();
                 }
             }
             if (opcion == 3) {
