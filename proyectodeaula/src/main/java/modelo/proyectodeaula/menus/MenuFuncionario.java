@@ -1,15 +1,24 @@
 package modelo.proyectodeaula.menus;
 
+import OpcionesMenus.Opciones_Funcionario;
 import java.util.Scanner;
-import modelo.proyectodeaula.Controladores.UsuarioController;
+import modelo.proyectodeaula.Clases.Usuario;
 
 public class MenuFuncionario {
 
-    public static void MenuFuncionario() {
-        UsuarioController menu = new UsuarioController();
+    public static void MenuFuncionario(Usuario usuario) {
+
         Scanner teclado = new Scanner(System.in);
+        Opciones_Funcionario op = new Opciones_Funcionario();
         int opcion = 0;
         do {
+            System.out.print("""
+                               *************************
+                                         MENU 
+                               """);
+            System.out.println("Bienvenido " + usuario.getNombre() + " "
+                    + usuario.getApellido());
+            System.out.println("Indique que desea hacer \n");
             System.out.println("""
                            **************************
                            1: Mostrar   Solicitudes
@@ -19,19 +28,8 @@ public class MenuFuncionario {
                            **************************""");
             System.out.print("opcion: ");
             opcion = teclado.nextInt();
-            switch (opcion) {
-                case 1 ->
-                    menu.mostrarSolicitudes(opcion);
-                case 2 ->
-                    menu.responderSolicitudes(opcion);
-                case 3 ->
-                    menu.mostrarReportes(opcion);
-                case 4 ->
-                    System.out.println("----Finalizado con exito----");
-                default ->
-                    System.out.println("----Opcion Incorrecta----");
-            }
-
-        } while (opcion < 3);
+            op.opcionesFuncionario(opcion);
+            
+        } while (opcion != 4);
     }
 }

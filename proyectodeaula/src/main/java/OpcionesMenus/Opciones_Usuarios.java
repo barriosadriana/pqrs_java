@@ -1,0 +1,30 @@
+
+package OpcionesMenus;
+
+
+import Registro.Registro_Solicitudes;
+import modelo.proyectodeaula.Clases.Solicitud;
+import modelo.proyectodeaula.Controladores.Control_Solicitud;
+
+public class Opciones_Usuarios {
+    public void opcionesUsuario(int opcion) {
+        Registro_Solicitudes register = new Registro_Solicitudes();
+        Control_Solicitud control = new Control_Solicitud();
+        switch (opcion) {
+            case 1:
+                Solicitud Solicitud = register.RegistroSolicitud();
+                control.addSolicitudes(Solicitud);
+                break;
+            case 2:
+                control.consultarSolicitud(opcion);
+                break;
+            case 3:
+                System.out.print("Finalizado con exito");
+                break;
+            default:
+                System.out.print("----Opcion Incorrecta----");
+                break;
+        }
+    }
+
+}

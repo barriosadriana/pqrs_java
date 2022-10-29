@@ -3,9 +3,7 @@ package modelo.proyectodeaula.Controladores;
 import java.util.ArrayList;
 import java.util.Scanner;
 import modelo.proyectodeaula.Clases.Solicitud;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import modelo.proyectodeaula.datos.data;
+import util.Cargar_ArrayList;
 
 public class Control_Solicitud {
 
@@ -19,47 +17,12 @@ public class Control_Solicitud {
         return solicitudes;
     }
 
-    /**
-     * metodo para registrar una solicitud de un ciudadano
+    /*
+    metodo para guardar Solicitudes
      */
-
-    public void RegistroSolicitud() {
-        ArrayList<Solicitud> solicitudes = this.getSolicitud();
-        Scanner teclado = new Scanner(System.in);
-        Solicitud objeto1 = new Solicitud();
-        String fecha = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss")
-                .format(Calendar.getInstance().getTime());
-        System.out.println("\n ----   Registro De Solicitudes ----\n");
-        System.out.print("""
-                         ----Indique el tipo de solicitud----
-                         
-                         1: Peticion
-                         2: Queja
-                         3: Reclamo
-                         4: Sugerencia
-                         """);
-        System.out.print("Opcion: ");
-        int tiposolicitud = teclado.nextInt();
-        teclado.nextLine();
-        objeto1.setTiposolicitud(tiposolicitud);
-        System.out.println("\n---- Descripcion de la solicitud ----\n ");
-        String descripcion = teclado.nextLine();
-        objeto1.setDescripcion(descripcion);
-        objeto1.setEstado("pendiente");
-        int random = (int) (Math.random() * 9999 + 1);
-        objeto1.setRadicado(random);
-        objeto1.setUsuariosolicitud(data.Instanciar().getUsuarioLogueado());
-        objeto1.setFecha(fecha);
-        solicitudes.add(objeto1);
-        System.out.print("""
-                         
-                         -------------------------------------------
-                         Su solicitud ha sido registrada exitosamente
-                         """);
-        System.out.println("Su numero de radicado es: " + random);
-        System.out.println("Fecha de creacion: " + fecha);
-        System.out.print("-------------------------------------------\n\n");
-
+    public void addSolicitudes(Solicitud solicitud) {
+        ArrayList<Solicitud> solicitudes = Cargar_ArrayList.Solicitudes;
+        solicitudes.add(solicitud);
     }
 
     /**
@@ -73,7 +36,7 @@ public class Control_Solicitud {
      */
     public void consultarEstado(int radicado) {
         Control_Respuesta resp = new Control_Respuesta();
-        ArrayList<Solicitud> solicitudes = this.getSolicitud();
+        ArrayList<Solicitud> solicitudes = Cargar_ArrayList.Solicitudes;
         for (Solicitud i : solicitudes) {
             if (i.getRadicado() == radicado) {
                 System.out.println("\n\nTipo Solicitud: "
@@ -118,7 +81,7 @@ public class Control_Solicitud {
      * @return true ( si este esta vacio si tiene datos retorna un false)
      */
     public boolean validarSolicitudes() {
-        ArrayList<Solicitud> solicitudes = this.getSolicitud();
+        ArrayList<Solicitud> solicitudes = Cargar_ArrayList.Solicitudes;
         if (solicitudes.size() == 0) {
             return true;
         } else {
@@ -158,7 +121,7 @@ public class Control_Solicitud {
      * especificos de los ArrayList
      */
     public void mostrarSolicitudes() {
-        ArrayList<Solicitud> solicitudes = this.getSolicitud();
+        ArrayList<Solicitud> solicitudes = Cargar_ArrayList.Solicitudes;
         for (Solicitud i : solicitudes) {
             if ("pendiente".equals(i.getEstado())) {
                 System.out.print(
@@ -184,7 +147,7 @@ public class Control_Solicitud {
     metodo para actualizar el estado de la solicitud de pendiente a resuelta
      */
     public void actualizarEstadoRespuesta(int radicado) {
-        ArrayList<Solicitud> solicitudes = this.getSolicitud();
+        ArrayList<Solicitud> solicitudes = Cargar_ArrayList.Solicitudes;
         for (Solicitud i : solicitudes) {
             if (radicado == i.getRadicado()) {
                 i.setEstado("resuelta");
@@ -196,13 +159,18 @@ public class Control_Solicitud {
     metodo para decir cuantas solicitudes pendientes existen
      */
     public void reporteSolicitudesPendientes() {
-        ArrayList<Solicitud> solicitudes = this.getSolicitud();
+        Control_Solicitud control = new Control_Solicitud();
+        ArrayList<Solicitud> solicitudes = Cargar_ArrayList.Solicitudes;
         int solicitudespendientes = 0;
-        for (Solicitud i : solicitudes) {
-            if (i.getEstado() == "pendiente") {
-                solicitudespendientes++;
+        if (control.validarSolicitudes() == true) {
+            System.out.println("El total de solicitudes pendientes son 0");
+        } else {
+            for (Solicitud i : solicitudes) {
+                if (i.getEstado() == "pendiente") {
+                    solicitudespendientes++;
+                }
+                System.out.println("Las solicitudes pendientes son: " + solicitudespendientes);
             }
-            System.out.print("Las solicitudes pendientes son: " + solicitudespendientes);
         }
     }
 
@@ -210,13 +178,19 @@ public class Control_Solicitud {
     metodo para decir cuantas solicitudes resueltas existen
      */
     public void reporteSolicitudesResueltas() {
-        ArrayList<Solicitud> solicitudes = this.getSolicitud();
+        ArrayList<Solicitud> solicitudes = Cargar_ArrayList.Solicitudes;
         int solicitudesresueltas = 0;
-        for (Solicitud i : solicitudes) {
-            if (i.getEstado() == "resuelta") {
-                solicitudesresueltas++;
+        Control_Solicitud control = new Control_Solicitud();
+        if (control.validarSolicitudes() == true) {
+            System.out.println("El total de solicitudes resueltas son 0");
+        } else {
+            for (Solicitud i : solicitudes) {
+                if (i.getEstado() == "resuelta") {
+                    solicitudesresueltas++;
+                }
+                System.out.println("Las solicitudes resueltas son: " + solicitudesresueltas);
             }
-            System.out.print("Las solicitudes resueltas son: " + solicitudesresueltas);
+
         }
     }
 
@@ -224,8 +198,13 @@ public class Control_Solicitud {
     metodo para imprimir cuantas solicitudes en estado pendiente y resueltas existen.
      */
     public void reporteSolicitudesTotal() {
-        ArrayList<Solicitud> solicitudes = this.getSolicitud();
-        System.out.print("El total de las solicitudes son: " + solicitudes.size());
+        Control_Solicitud control = new Control_Solicitud();
+        ArrayList<Solicitud> solicitudes = Cargar_ArrayList.Solicitudes;
+        if (control.validarSolicitudes() == true) {
+            System.out.println("El total de solicitudes son 0");
+        } else {
+            System.out.println("El total de las solicitudes son: " + solicitudes.size());
+        }
 
     }
 }

@@ -1,15 +1,17 @@
 package modelo.proyectodeaula.menus;
 
+import OpcionesMenus.Opciones_Menu_Principal;
 import java.util.Scanner;
-import modelo.proyectodeaula.Controladores.UsuarioController;
+import static util.Cargar_ArrayList.cargarDatos;
 
 public class MenuPrincipal {
-
+    
     public static void main(String[] args) {
+        cargarDatos();
+        Opciones_Menu_Principal op = new Opciones_Menu_Principal();
         Scanner teclado = new Scanner(System.in);
-        UsuarioController user = new UsuarioController();
         int opcion = 0;
-        do{
+        do {
             System.out.println("""
                            ***********************
                            ---- Menu Principal ----
@@ -19,15 +21,7 @@ public class MenuPrincipal {
                            ***********************\n""");
             System.out.print("Ingrese su opcion: ");
             opcion = teclado.nextInt();
-            switch (opcion) {
-                case 1 ->
-                    user.registerUsuario();
-                case 2 ->
-                    MenuInicioSesion.iniciosesion();
-                case 3 ->
-                    System.out.println("Finalizado Con Exito");
-                default ->
-                    System.out.println("Opcion invalida");}
-        }while(opcion >3);
+            op.opcionesMenuPrincipal(opcion);
+        } while (opcion != 3);
     }
 }

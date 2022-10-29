@@ -5,10 +5,10 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import modelo.proyectodeaula.Clases.Usuario;
-import modelo.proyectodeaula.datos.data;
 import modelo.proyectodeaula.menus.MenuAdministrador;
 import modelo.proyectodeaula.menus.MenuFuncionario;
 import modelo.proyectodeaula.menus.MenuUsuario;
+import util.Cargar_ArrayList;
 import util.ConfigurationHelper;
 
 /**
@@ -28,7 +28,7 @@ public class UsuarioController {
      */
     public Usuario buscarUsuario(int userId, String password) {
 
-        ArrayList<Usuario> usuarios = this.getUsuarios();
+        ArrayList<Usuario> usuarios = Cargar_ArrayList.Usuarios;
         for (Usuario user : usuarios) {
             if (user.getId() == userId && user.getContraseña().equals(password)) {
                 return user;
@@ -88,45 +88,19 @@ public class UsuarioController {
     /**
      * Metodo para registrar un usuario.
      */
-    public void registerUsuario() {
-        ArrayList<Usuario> usuarios = this.getUsuarios();
-        Usuario user = new Usuario();
-        Scanner teclado = new Scanner(System.in);
-        System.out.println("\n ----   Registro De Usuario ----\n");
-        System.out.print("Ingrese su nombre: ");
-        String nombre = teclado.nextLine();
-        user.setNombre(nombre);
-        System.out.print("Ingrese su apellido: ");
-        String apellido = teclado.nextLine();
-        user.setApellido(apellido);
-        System.out.print("Ingrese su tipo de identificacion: ");
-        String tipodeidentificacion = teclado.nextLine();
-        user.setTipodeidentificacion(tipodeidentificacion);
-        System.out.print("Ingrese su numero de identificacion: ");
-        int numerodeidentificacion = teclado.nextInt();
-        teclado.nextLine();
-        user.setNumerodeidentificacion(numerodeidentificacion);
-        System.out.print("Ingrese una contraseña: ");
-        String contraseña = teclado.nextLine();
-        user.setContraseña(contraseña);
-        int random = (int) (Math.random() * 99 + 1);
-        user.setId(random);
-        user.setRol("ciudadano");
+    public void registrarUsuario(Usuario user) {
+        ArrayList<Usuario> usuarios = Cargar_ArrayList.Usuarios;
         usuarios.add(user);
-        System.out.print("\n");
-        System.out.print("**** Usuario Registrado ****\n"
-                + "\nSu usuario es: " + user.getId() + "\n"
-                + "Su Contraseña es: " + user.getContraseña() + "\n\n");
     }
 
     /**
      * Metodo para validar las credenciales del usuario y dependiendo del tipo
-     * de usuario se le desplega el tipo de menu que requiere.
+     * de usuario se le desplega el tipo de menu que requiere.Se requiere como
+     * parametro
      *
-     * Se requiere como parametro
      *
-     * @param int usuario (el id del usuario con el cual inicia sesion)
-     * @param String contraseña ( la contraseña registrada en el sistema)
+     * @param usuario usuario (el id del usuario con el cual inicia sesion)
+     * @param contraseña contraseña ( la contraseña registrada en el sistema)
      */
     public static void validarUsuario(int usuario, String contraseña) {
         boolean credencialesCorrectas = false;
@@ -135,19 +109,19 @@ public class UsuarioController {
         Usuario currentUser = controlador.buscarUsuario(usuario, contraseña);
         if (currentUser != null) {
             credencialesCorrectas = true;
-            rol1 = currentUser.getRol();
-            data.Instanciar().setUsuarioLogueado(currentUser);
+            Cargar_ArrayList.CurrentUser = currentUser;
         }
         if (credencialesCorrectas == true) {
-            if ("ciudadano".equals(rol1)) {
-                MenuUsuario.MenuUsuario(usuario);
+            if ("ciudadano".equals(currentUser.getRol())) {
+                MenuUsuario.ShowMenuUsuario(Cargar_ArrayList.CurrentUser);
             }
-            if ("funcionario".equals(rol1)) {
-                MenuFuncionario.MenuFuncionario();
+            if ("funcionario".equals(currentUser.getRol())) {
+                MenuFuncionario.MenuFuncionario(Cargar_ArrayList.CurrentUser);
             }
-            if ("administrador".equals(rol1)) {
-                MenuAdministrador.MenuAdministrador();
+            if ("administrador".equals(currentUser.getRol())) {
+                MenuAdministrador.MenuAdministrador(Cargar_ArrayList.CurrentUser);
             }
+
         } else {
             System.out.print("""
 
@@ -172,48 +146,20 @@ public class UsuarioController {
         }
     }
 
-    /**
-     * metodo para registrar usuarios desde el menu administrador donde este
-     * puede digitar el rol del cual pertenece el usuario
-     */
-    public void RegistrarUsuarioAdministrador() {
-        ArrayList<Usuario> usuarios = this.getUsuarios();
-        Scanner teclado = new Scanner(System.in);
-        Usuario user = new Usuario();
-        System.out.println("\n ----   Registro De Usuario ----\n");
-        System.out.print("Ingrese su nombre: ");
-        String nombre = teclado.nextLine();
-        user.setNombre(nombre);
-        System.out.print("Ingrese su apellido: ");
-        String apellido = teclado.nextLine();
-        user.setApellido(apellido);
-        System.out.print("Ingrese su tipo de identificacion: ");
-        String tipodeidentificacion = teclado.nextLine();
-        user.setTipodeidentificacion(tipodeidentificacion);
-        System.out.print("Ingrese su numero de identificacion: ");
-        int numerodeidentificacion = teclado.nextInt();
-        teclado.nextLine();
-        user.setNumerodeidentificacion(numerodeidentificacion);
-        System.out.print("Ingrese una contraseña: ");
-        String contraseña = teclado.nextLine();
-        user.setContraseña(contraseña);
-        int random = (int) (Math.random() * 99 + 1);
-        user.setId(random);
-        System.out.print("Ingrese el rol: ");
-        String rol = teclado.nextLine();
-        user.setRol(rol);
-        usuarios.add(user);
-        System.out.print("\n");
-        System.out.print("**** Usuario Registrado ****\n"
-                + "Su usuario es: " + user.getId() + "\n"
-                + "Su Contraseña es: " + user.getContraseña() + "\n");
+    public void consultarSolicitudes() {
+        Control_Solicitud control = new Control_Solicitud();
+        if (control.validarSolicitudes() == true) {
+            System.out.print("\nNo hay solicitudes registradas");
+            System.out.print("\n");
+        } else {
+            control.mostrarSolicitudes();
+        }
     }
-
-    /**
-     * metodo para listar los usuarios registrados retorna los valores guardados
-     * en el ArrayList usuario
-     */
-    public static void usuarios_Registrados() {
+        /**
+         * metodo para listar los usuarios registrados retorna los valores
+         * guardados en el ArrayList usuario
+         */
+        public void usuarios_Registrados() {
         UsuarioController userController = new UsuarioController();
         int index = 1;
         for (Usuario i : userController.getUsuarios()) {
@@ -247,10 +193,10 @@ public class UsuarioController {
     }
 
     /**
-     * metodo para responder las solicitudes pendientes
-     * este primero verifica si el ArrayList de solicitudes este vacio o tiene
-     * datos si esta vacia imprime que no hay solicitudes registradas si tiene
-     * datos ejecuta el metodo de registrar la respuesta
+     * metodo para responder las solicitudes pendientes este primero verifica si
+     * el ArrayList de solicitudes este vacio o tiene datos si esta vacia
+     * imprime que no hay solicitudes registradas si tiene datos ejecuta el
+     * metodo de registrar la respuesta
      *
      * requiere como parametro
      *
@@ -268,11 +214,11 @@ public class UsuarioController {
     }
 
     /**
-     * metodo para mostrar menu de Reportes
-     * deoendiendo de la opcion que escogas te imprimira el 
-     * reporte que solicitas
-     * 
-     * requiere como parametro 
+     * metodo para mostrar menu de Reportes deoendiendo de la opcion que escogas
+     * te imprimira el reporte que solicitas
+     *
+     * requiere como parametro
+     *
      * @param opcion (la cual se digita en el menu)
      */
     public void mostrarReportes(int opcion) {
