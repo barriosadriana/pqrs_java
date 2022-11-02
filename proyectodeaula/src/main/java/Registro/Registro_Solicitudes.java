@@ -4,31 +4,23 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Scanner;
 import modelo.proyectodeaula.Clases.Solicitud;
+import modelo.proyectodeaula.menus.Tipo_Solicitudes;
 import util.Cargar_ArrayList;
 
 public class Registro_Solicitudes {
-   
+
     /**
      * metodo para registrar una solicitud de un ciudadano
+     *
      * @return soli
      */
     public Solicitud RegistroSolicitud() {
+        Tipo_Solicitudes menu = new Tipo_Solicitudes();
         Scanner teclado = new Scanner(System.in);
         Solicitud soli = new Solicitud();
         String fecha = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss")
-                .format(Calendar.getInstance().getTime());
-        System.out.println("\n ----   Registro De Solicitudes ----\n");
-        System.out.print("""
-                         ----Indique el tipo de solicitud----
-                         
-                         1: Peticion
-                         2: Queja
-                         3: Reclamo
-                         4: Sugerencia
-                         """);
-        System.out.print("Opcion: ");
-        int tiposolicitud = teclado.nextInt();
-        teclado.nextLine();
+        .format(Calendar.getInstance().getTime());
+        int tiposolicitud = menu.tipo_Solicitudes();
         soli.setTiposolicitud(tiposolicitud);
         System.out.println("\n---- Descripcion de la solicitud ----\n ");
         String descripcion = teclado.nextLine();

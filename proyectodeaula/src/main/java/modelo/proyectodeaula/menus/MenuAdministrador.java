@@ -1,14 +1,13 @@
 package modelo.proyectodeaula.menus;
 
 import OpcionesMenus.Opciones_Menu_Administrador;
-import java.util.Scanner;
 import modelo.proyectodeaula.Clases.Usuario;
+import util.Validador;
 
 public class MenuAdministrador {
 
     public static void MenuAdministrador(Usuario usuario) {
         Opciones_Menu_Administrador menu = new Opciones_Menu_Administrador();
-        Scanner teclado = new Scanner(System.in);
         int opcion = 0;
         do {
             System.out.print("""
@@ -25,8 +24,7 @@ public class MenuAdministrador {
                            3: Reportes
                            4: Salir
                            ***************************""");
-            System.out.print("Ingrese la opcion: ");
-            opcion = teclado.nextInt();
+            opcion = Validador.numerosMenu();
             menu.opcionesAdministrador(opcion);
         }while(opcion !=4);
     }

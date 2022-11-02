@@ -1,14 +1,13 @@
 package modelo.proyectodeaula.menus;
 
 import OpcionesMenus.Opciones_Funcionario;
-import java.util.Scanner;
 import modelo.proyectodeaula.Clases.Usuario;
+import util.Validador;
 
 public class MenuFuncionario {
 
     public static void MenuFuncionario(Usuario usuario) {
 
-        Scanner teclado = new Scanner(System.in);
         Opciones_Funcionario op = new Opciones_Funcionario();
         int opcion = 0;
         do {
@@ -26,8 +25,7 @@ public class MenuFuncionario {
                            3: Generar Reportes
                            4: Salir
                            **************************""");
-            System.out.print("opcion: ");
-            opcion = teclado.nextInt();
+            opcion = Validador.numerosMenu();
             op.opcionesFuncionario(opcion);
             
         } while (opcion != 4);

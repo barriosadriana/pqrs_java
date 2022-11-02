@@ -5,7 +5,7 @@ public class Usuario {
     private String nombre;
     private String apellido;
     private String tipodeidentificacion;
-    private int numerodeidentificacion;
+    private String numerodeidentificacion;
     private int id;
     private String rol;
     private String contraseña;
@@ -30,7 +30,7 @@ public class Usuario {
         this.tipodeidentificacion = tipodeidentificacion;
     }
 
-    public void setNumerodeidentificacion(int numerodeidentificacion) {
+    public void setNumerodeidentificacion(String numerodeidentificacion) {
         this.numerodeidentificacion = numerodeidentificacion;
     }
 
@@ -54,7 +54,7 @@ public class Usuario {
         return tipodeidentificacion;
     }
 
-    public int getNumerodeidentificacion() {
+    public String getNumerodeidentificacion() {
         return numerodeidentificacion;
     }
 

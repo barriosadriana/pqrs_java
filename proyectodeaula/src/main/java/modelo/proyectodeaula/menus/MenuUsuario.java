@@ -1,8 +1,8 @@
 package modelo.proyectodeaula.menus;
 
 import OpcionesMenus.Opciones_Usuarios;
-import java.util.Scanner;
 import modelo.proyectodeaula.Clases.Usuario;
+import util.Validador;
 
 public class MenuUsuario {
     
@@ -11,7 +11,6 @@ public class MenuUsuario {
         Opciones_Usuarios opcionmenu = new Opciones_Usuarios();
         
         do {
-            Scanner teclado = new Scanner(System.in);
             System.out.print("""
                                *************************
                                          MENU 
@@ -24,8 +23,7 @@ public class MenuUsuario {
                            2: Consultar Solicitud
                            3: Salir                           
                            *************************\n""");
-            System.out.print("Ingrese su opcion: ");
-            opcion = teclado.nextInt();
+            opcion = Validador.numerosMenu();
             opcionmenu.opcionesUsuario(opcion);
         } while (opcion != 3);
         return opcion;

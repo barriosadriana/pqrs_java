@@ -28,8 +28,7 @@ public class Registro_Usuario_Administrador {
         String tipodeidentificacion = teclado.nextLine();
         user.setTipodeidentificacion(tipodeidentificacion);
         System.out.print("Ingrese su numero de identificacion: ");
-        int numerodeidentificacion = teclado.nextInt();
-        teclado.nextLine();
+        String numerodeidentificacion = teclado.nextLine();
         user.setNumerodeidentificacion(numerodeidentificacion);
         System.out.print("Ingrese una contraseña: ");
         String contraseña = teclado.nextLine();

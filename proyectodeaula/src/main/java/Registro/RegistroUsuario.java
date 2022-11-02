@@ -3,13 +3,14 @@ package Registro;
 
 import java.util.Scanner;
 import modelo.proyectodeaula.Clases.Usuario;
+import util.Validador;
 
 public class RegistroUsuario {
     /**
      * Metodo para registrar un usuario.
      * @return 
      */
-   public Usuario registerUsuario() {
+   public Usuario registerUsuario (){
         Usuario user = new Usuario();
         Scanner teclado = new Scanner(System.in);
         System.out.println("\n ----   Registro De Usuario ----\n");
@@ -22,9 +23,7 @@ public class RegistroUsuario {
         System.out.print("Ingrese su tipo de identificacion: ");
         String tipodeidentificacion = teclado.nextLine();
         user.setTipodeidentificacion(tipodeidentificacion);
-        System.out.print("Ingrese su numero de identificacion: ");
-        int numerodeidentificacion = teclado.nextInt();
-        teclado.nextLine();
+        String numerodeidentificacion = Validador.numeros();
         user.setNumerodeidentificacion(numerodeidentificacion);
         System.out.print("Ingrese una contraseña: ");
         String contraseña = teclado.nextLine();

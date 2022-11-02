@@ -1,13 +1,12 @@
 package modelo.proyectodeaula.menus;
 
 import OpcionesMenus.Opciones_Reportes;
-import java.util.Scanner;
+import util.Validador;
 
 public class MenuReportes {
 
     public void reportes() {
         Opciones_Reportes report = new Opciones_Reportes();
-        Scanner teclado = new Scanner(System.in);
         int opcion =0;
         do{
             System.out.print("""
@@ -19,8 +18,7 @@ public class MenuReportes {
                              4: Salir
                              
                              """);
-        System.out.print("Opcion: ");
-        opcion = teclado.nextInt();
+        opcion = Validador.numerosMenu();
         report.opcionesReportes(opcion);
         }while(opcion !=4);
     }

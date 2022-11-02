@@ -3,6 +3,7 @@ package modelo.proyectodeaula.menus;
 
 import java.util.Scanner;
 import modelo.proyectodeaula.Controladores.UsuarioController;
+import util.Validador;
 
 public class MenuInicioSesion {
     public static void iniciosesion(){
@@ -12,8 +13,7 @@ public class MenuInicioSesion {
         String contraseña="";
         if (!UsuarioController.validarUsuariosRegistrados()) {
             System.out.println("\n----  Login   ----\n");
-            System.out.print("Ingrese su usuario: ");
-            usuario = teclado.nextInt();teclado.nextLine();
+            usuario = Validador.numeroIdUsuario();
             System.out.print("Ingrese su contraseña: ");
             contraseña= teclado.nextLine();
             System.out.print("\n\n");

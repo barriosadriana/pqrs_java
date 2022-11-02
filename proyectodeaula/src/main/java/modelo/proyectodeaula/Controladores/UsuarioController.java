@@ -60,7 +60,7 @@ public class UsuarioController {
                 String nombre = usuarios_creados[0];
                 String apellido = usuarios_creados[1];
                 String tipodeidentificacion = usuarios_creados[2];
-                int numerodeidentificacion = Integer.parseInt(usuarios_creados[3]);
+                String numerodeidentificacion = usuarios_creados[3];
                 int id = Integer.parseInt(usuarios_creados[4]);
                 String rol = usuarios_creados[5];
                 String contraseña = usuarios_creados[6];
