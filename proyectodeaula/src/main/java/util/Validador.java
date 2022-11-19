@@ -26,6 +26,7 @@ public class Validador {
                 System.out.println("opcion invalida");
                 System.out.println("Ingrese su numero de identificacion: ");
                 numerodeidentificacion = teclado.nextLine();
+                num = numerodeidentificacion;
             }
         } while (Validador.isNumeric(numerodeidentificacion) == false);
         return num;
@@ -43,6 +44,7 @@ public class Validador {
                 System.out.println("opcion invalida");
                 System.out.println("Ingrese un numero valido: ");
                 opcion = teclado.nextLine();
+                opc = Integer. parseInt(opcion);
             }
         } while (Validador.isNumeric(opcion) == false);
         return opc;
@@ -57,6 +59,7 @@ public class Validador {
                System.out.println("opcion invalida");
                System.out.println("Ingrese un usuario valido: ");
                user = teclado.nextLine();
+               userId = Integer. parseInt(user);
            }
            if(Validador.isNumeric(user) == true){
                userId = Integer. parseInt(user);}
