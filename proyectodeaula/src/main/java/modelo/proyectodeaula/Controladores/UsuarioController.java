@@ -212,39 +212,5 @@ public class UsuarioController {
             resp.registroRespuesta();
         }
     }
-
-    /**
-     * metodo para mostrar menu de Reportes deoendiendo de la opcion que escogas
-     * te imprimira el reporte que solicitas
-     *
-     * requiere como parametro
-     *
-     * @param opcion (la cual se digita en el menu)
-     */
-    public void mostrarReportes(int opcion) {
-        Control_Solicitud control = new Control_Solicitud();
-        Scanner teclado = new Scanner(System.in);
-        if (opcion == 3) {
-            System.out.print("""
-                               ------Indique que reporte desea------
-                             
-                             1: Numero total de solicitudes pendientes.
-                             2: Numero total de solicitudes resueltas.
-                             3: Numero total de solicitudes ingresadas al sistema.
-                             
-                             """);
-            System.out.print("Opcion: ");
-            int opciones = teclado.nextInt();
-            switch (opciones) {
-                case 1 ->
-                    control.reporteSolicitudesPendientes();
-                case 2 ->
-                    control.reporteSolicitudesResueltas();
-                case 3 ->
-                    control.reporteSolicitudesTotal();
-                default ->
-                    System.out.print("----Opcion incorrecta----");
-            }
-        }
-    }
 }
+

@@ -15,11 +15,12 @@ public class MenuReportes {
                              1: Numero total de solicitudes pendientes.
                              2: Numero total de solicitudes resueltas.
                              3: Numero total de solicitudes ingresadas al sistema.
-                             4: Salir
-                             
+                             4: Solicitudes favorables.
+                             5: Solicitudes no favorables.
+                             6: Salir
                              """);
         opcion = Validador.numerosMenu();
         report.opcionesReportes(opcion);
-        }while(opcion !=4);
+        }while(opcion !=6);
     }
 }

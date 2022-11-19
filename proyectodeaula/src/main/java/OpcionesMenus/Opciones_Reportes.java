@@ -17,6 +17,12 @@ public class Opciones_Reportes {
                 control.reporteSolicitudesTotal();
                 break;
             case 4:
+                control.solicitudesFavorables();
+                break;
+            case 5:
+                control.solicitudesNoFavorables();
+                break;
+            case 6:
                 System.out.println("-------------------------------------");
                 break;
             default:

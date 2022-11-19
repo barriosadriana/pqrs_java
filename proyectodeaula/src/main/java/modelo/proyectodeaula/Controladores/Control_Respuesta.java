@@ -1,29 +1,20 @@
 package modelo.proyectodeaula.Controladores;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Scanner;
 import modelo.proyectodeaula.Clases.Respuesta;
+import util.Cargar_ArrayList;
+import static util.Validador.numerosMenu;
 
 public class Control_Respuesta {
-
-    /**
-     * metodo para crear el ArrayList respuestas y retornar este mismo
-     *
-     * @return respuestas
-     */
-    public ArrayList<Respuesta> getRespuesta() {
-        ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
-        return respuestas;
-    }
 
     /**
      * metodo para registrar una respuesta de una solicitud
      */
     public void registroRespuesta() {
         Control_Solicitud control = new Control_Solicitud();
-        ArrayList<Respuesta> respuestas = this.getRespuesta();
+        Control_Respuesta resp = new Control_Respuesta();
         Scanner teclado = new Scanner(System.in);
         String fecha = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
         Respuesta objeto1 = new Respuesta();
@@ -39,8 +30,30 @@ public class Control_Respuesta {
         String funcionario = teclado.nextLine();
         objeto1.setFuncionario(funcionario);
         objeto1.setFecha(fecha);
-        respuestas.add(objeto1);
+        Cargar_ArrayList.Respuestas.add(objeto1);
         control.actualizarEstadoRespuesta(radicado);
+        resp.favorableono();
+
+    }
+
+    public void favorableono() {
+        int opcion = 0;
+        do {
+            System.out.println("""
+                         -----------------------------
+                         Indique si es favorable o no
+                         1: Si
+                         2: No
+                     
+                         """);
+            opcion = numerosMenu();
+            if (opcion == 1) {
+                Cargar_ArrayList.Favorable = Cargar_ArrayList.Favorable + 1;
+            }
+            if (opcion == 2) {
+                Cargar_ArrayList.Nofavorable = Cargar_ArrayList.Nofavorable + 1;
+            }
+        } while (opcion != 1 && opcion != 2);
 
     }
 
@@ -51,12 +64,11 @@ public class Control_Respuesta {
      * @param radicado ( el cual se digita en el menu)
      */
     public void mostrarRespuesta(int radicado) {
-        ArrayList<Respuesta> respuestas = this.getRespuesta();
         if (validarRespuestas() == true) {
             System.out.print("----No hay respuestas disponibles----");
             System.out.print("\n\n");
         } else {
-            for (Respuesta i : respuestas) {
+            for (Respuesta i : Cargar_ArrayList.Respuestas) {
                 if (i.getRadicado() == radicado) {
                     System.out.print("Respuesta: " + i.getRespuesta() + "\n\n");
                 }
@@ -70,8 +82,7 @@ public class Control_Respuesta {
      * @return true o false dependiendo si tiene datos o no
      */
     public boolean validarRespuestas() {
-        ArrayList<Respuesta> respuestas = this.getRespuesta();
-        if (respuestas.size() == 0) {
+        if (Cargar_ArrayList.Respuestas.size() == 0) {
             return true;
         } else {
             return false;

@@ -7,22 +7,11 @@ import util.Cargar_ArrayList;
 
 public class Control_Solicitud {
 
-    /**
-     * metodo donde se crea el ArrayList y este mismo se retorna
-     *
-     * @return solicitudes
-     */
-    public ArrayList<Solicitud> getSolicitud() {
-        ArrayList<Solicitud> solicitudes = new ArrayList<Solicitud>();
-        return solicitudes;
-    }
-
     /*
     metodo para guardar Solicitudes
      */
     public void addSolicitudes(Solicitud solicitud) {
-        ArrayList<Solicitud> solicitudes = Cargar_ArrayList.Solicitudes;
-        solicitudes.add(solicitud);
+        Cargar_ArrayList.Solicitudes.add(solicitud);
     }
 
     /**
@@ -36,8 +25,7 @@ public class Control_Solicitud {
      */
     public void consultarEstado(int radicado) {
         Control_Respuesta resp = new Control_Respuesta();
-        ArrayList<Solicitud> solicitudes = Cargar_ArrayList.Solicitudes;
-        for (Solicitud i : solicitudes) {
+        for (Solicitud i : Cargar_ArrayList.Solicitudes) {
             if (i.getRadicado() == radicado) {
                 System.out.println("\n\nTipo Solicitud: "
                         + tiposdesolicitud(i.getTiposolicitud())
@@ -81,8 +69,7 @@ public class Control_Solicitud {
      * @return true ( si este esta vacio si tiene datos retorna un false)
      */
     public boolean validarSolicitudes() {
-        ArrayList<Solicitud> solicitudes = Cargar_ArrayList.Solicitudes;
-        if (solicitudes.size() == 0) {
+        if (Cargar_ArrayList.Solicitudes.size() == 0) {
             return true;
         } else {
             return false;
@@ -121,8 +108,7 @@ public class Control_Solicitud {
      * especificos de los ArrayList
      */
     public void mostrarSolicitudes() {
-        ArrayList<Solicitud> solicitudes = Cargar_ArrayList.Solicitudes;
-        for (Solicitud i : solicitudes) {
+        for (Solicitud i : Cargar_ArrayList.Solicitudes) {
             if ("pendiente".equals(i.getEstado())) {
                 System.out.print(
                         "--------------------------------------------------------"
@@ -147,8 +133,7 @@ public class Control_Solicitud {
     metodo para actualizar el estado de la solicitud de pendiente a resuelta
      */
     public void actualizarEstadoRespuesta(int radicado) {
-        ArrayList<Solicitud> solicitudes = Cargar_ArrayList.Solicitudes;
-        for (Solicitud i : solicitudes) {
+        for (Solicitud i : Cargar_ArrayList.Solicitudes) {
             if (radicado == i.getRadicado()) {
                 i.setEstado("resuelta");
             }
@@ -160,12 +145,11 @@ public class Control_Solicitud {
      */
     public void reporteSolicitudesPendientes() {
         Control_Solicitud control = new Control_Solicitud();
-        ArrayList<Solicitud> solicitudes = Cargar_ArrayList.Solicitudes;
         int solicitudespendientes = 0;
         if (control.validarSolicitudes() == true) {
             System.out.println("El total de solicitudes pendientes son 0");
         } else {
-            for (Solicitud i : solicitudes) {
+            for (Solicitud i : Cargar_ArrayList.Solicitudes) {
                 if (i.getEstado() == "pendiente") {
                     solicitudespendientes++;
                 }
@@ -178,13 +162,12 @@ public class Control_Solicitud {
     metodo para decir cuantas solicitudes resueltas existen
      */
     public void reporteSolicitudesResueltas() {
-        ArrayList<Solicitud> solicitudes = Cargar_ArrayList.Solicitudes;
         int solicitudesresueltas = 0;
         Control_Solicitud control = new Control_Solicitud();
         if (control.validarSolicitudes() == true) {
             System.out.println("El total de solicitudes resueltas son 0");
         } else {
-            for (Solicitud i : solicitudes) {
+            for (Solicitud i : Cargar_ArrayList.Solicitudes) {
                 if (i.getEstado() == "resuelta") {
                     solicitudesresueltas++;
                 }
@@ -199,12 +182,26 @@ public class Control_Solicitud {
      */
     public void reporteSolicitudesTotal() {
         Control_Solicitud control = new Control_Solicitud();
-        ArrayList<Solicitud> solicitudes = Cargar_ArrayList.Solicitudes;
         if (control.validarSolicitudes() == true) {
             System.out.println("El total de solicitudes son 0");
         } else {
-            System.out.println("El total de las solicitudes son: " + solicitudes.size());
+            System.out.println("El total de las solicitudes son: " + Cargar_ArrayList.Solicitudes.size());
         }
-
+    }
+    public void solicitudesFavorables(){
+        Control_Solicitud control = new Control_Solicitud();
+        if (control.validarSolicitudes() == true) {
+            System.out.println("El total de solicitudes favorables son 0");}
+        else{
+            System.out.println("El total de solicitudes favorables son: "+Cargar_ArrayList.Favorable);
+        }
+    }
+    public void solicitudesNoFavorables(){
+        Control_Solicitud control = new Control_Solicitud();
+        if (control.validarSolicitudes() == true) {
+            System.out.println("El total de solicitudes No favorables son 0");}
+        else{
+            System.out.println("El total de solicitudes No favorables son: "+Cargar_ArrayList.Nofavorable);
+        }
     }
 }

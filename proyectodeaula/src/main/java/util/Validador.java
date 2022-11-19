@@ -50,6 +50,8 @@ public class Validador {
         return opc;
     }
     
+    
+    
     public static int numeroIdUsuario() {
         Scanner teclado = new Scanner(System.in);
         System.out.print("Ingrese su usuario: ");
