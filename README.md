@@ -7,7 +7,7 @@ Integrantes:
 |  *Arturo* | *Marrugo Llamas*  | 
 |  *Jhojam Jesus* | *Caraballo Tapia*  | 
 |  *Ismael David* | *Trocha* | 
-|  *Jordan* | *Miranda Perez*  | 
+|  *Jordan Jose* | *Miranda Perez*  | 
 
 ### ¿En que consiste el proyecto?
 Este proyecto esta enfocado en crear un software bajo el lenguaje java el cual maneje las PQRS (Peticiones,Quejas,Reclamos,Sugerencias).  
