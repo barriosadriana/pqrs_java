@@ -13,10 +13,13 @@ public class MenuPrincipal {
         do {
             System.out.println("""
                            ***********************
+                               
                            ---- Menu Principal ----
+                               
                            1: Registrar Usuario
                            2: Iniciar   Seccion
                            3: Salir
+                               
                            ***********************\n""");
             opcion = Validador.numerosMenu();
             op.opcionesMenuPrincipal(opcion);

@@ -185,8 +185,9 @@ public class UsuarioController {
     public void mostrarSolicitudes(int opcion) {
         Control_Solicitud control = new Control_Solicitud();
         if (control.validarSolicitudes() == true) {
-            System.out.print("\nNo hay solicitudes registradas");
-            System.out.print("\n");
+                System.out.println("==========================================");
+                System.out.println("***** No hay solicitudes registradas *****");
+                System.out.println("==========================================");            
         } else {
             control.mostrarSolicitudes();
         }

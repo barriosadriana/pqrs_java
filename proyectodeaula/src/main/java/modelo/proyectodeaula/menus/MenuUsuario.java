@@ -13,15 +13,18 @@ public class MenuUsuario {
         do {
             System.out.print("""
                                *************************
+                             
                                          MENU 
+                             
                                """);
             System.out.println("Bienvenido " + usuario.getNombre() + " "
                     + usuario.getApellido());
-            System.out.println("Indique que desea hacer \n");
+            System.out.println("Indique que desea hacer:  \n");
             System.out.println("""                           
                            1: Registrar Solicitud
                            2: Consultar Solicitud
-                           3: Salir                           
+                           3: Salir
+                               
                            *************************\n""");
             opcion = Validador.numerosMenu();
             opcionmenu.opcionesUsuario(opcion);

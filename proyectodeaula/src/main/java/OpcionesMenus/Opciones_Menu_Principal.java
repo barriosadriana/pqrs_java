@@ -21,10 +21,14 @@ public class Opciones_Menu_Principal {
                 MenuInicioSesion.iniciosesion();
                 break;
             case 3:
-                System.out.println("Finalizado Con Exito");
+                System.out.println("===============================");
+                System.out.println("**** Finalizado con exito ****");
+                System.out.println("===============================");
                 break;
             default:
-                System.out.println("Opcion invalida");
+                System.out.println("===========================");
+                System.out.println("***** Opcion invalida *****");
+                System.out.println("===========================");
                 break;
 
         }

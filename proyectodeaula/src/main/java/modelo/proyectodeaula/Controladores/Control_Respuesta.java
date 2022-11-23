@@ -65,8 +65,8 @@ public class Control_Respuesta {
      */
     public void mostrarRespuesta(int radicado) {
         if (validarRespuestas() == true) {
-            System.out.print("----No hay respuestas disponibles----");
-            System.out.print("\n\n");
+            System.out.println("***** No hay respuestas disponibles *****");
+            System.out.println("==========================================\n");
         } else {
             for (Respuesta i : Cargar_ArrayList.Respuestas) {
                 if (i.getRadicado() == radicado) {

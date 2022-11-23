@@ -27,12 +27,18 @@ public class Control_Solicitud {
         Control_Respuesta resp = new Control_Respuesta();
         for (Solicitud i : Cargar_ArrayList.Solicitudes) {
             if (i.getRadicado() == radicado) {
+                System.out.println("==========================================");
                 System.out.println("\n\nTipo Solicitud: "
                         + tiposdesolicitud(i.getTiposolicitud())
                         + "\n" + "Descripcion: " + i.getDescripcion() + "\n"
                         + "Estado: " + i.getEstado() + "\n" + "Fecha de creacion: "
                         + i.getFecha() + "\n");
+                System.out.println("==========================================");
                 resp.mostrarRespuesta(i.getRadicado());
+            } else {
+                System.out.println("=======================================");
+                System.out.println("***** Numero de radicado invalido *****");
+                System.out.println("=======================================");
             }
         }
     }
@@ -124,6 +130,10 @@ public class Control_Solicitud {
                         + "\n" + "# de radicado: " + i.getRadicado()
                         + "\n" + "Fecha de creacion: " + i.getFecha()
                         + "\n" + "--------------------------------------------------------\n\n");
+            } else {
+                System.out.println("=========================================");
+                System.out.println("***** No hay solicitudes pendientes *****");
+                System.out.println("=========================================");
             }
         }
 
@@ -188,20 +198,22 @@ public class Control_Solicitud {
             System.out.println("El total de las solicitudes son: " + Cargar_ArrayList.Solicitudes.size());
         }
     }
-    public void solicitudesFavorables(){
+
+    public void solicitudesFavorables() {
         Control_Solicitud control = new Control_Solicitud();
         if (control.validarSolicitudes() == true) {
-            System.out.println("El total de solicitudes favorables son 0");}
-        else{
-            System.out.println("El total de solicitudes favorables son: "+Cargar_ArrayList.Favorable);
+            System.out.println("El total de solicitudes favorables son 0");
+        } else {
+            System.out.println("El total de solicitudes favorables son: " + Cargar_ArrayList.Favorable);
         }
     }
-    public void solicitudesNoFavorables(){
+
+    public void solicitudesNoFavorables() {
         Control_Solicitud control = new Control_Solicitud();
         if (control.validarSolicitudes() == true) {
-            System.out.println("El total de solicitudes No favorables son 0");}
-        else{
-            System.out.println("El total de solicitudes No favorables son: "+Cargar_ArrayList.Nofavorable);
+            System.out.println("El total de solicitudes No favorables son 0");
+        } else {
+            System.out.println("El total de solicitudes No favorables son: " + Cargar_ArrayList.Nofavorable);
         }
     }
 }

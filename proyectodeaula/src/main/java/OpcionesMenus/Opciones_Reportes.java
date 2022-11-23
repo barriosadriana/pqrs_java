@@ -23,10 +23,14 @@ public class Opciones_Reportes {
                 control.solicitudesNoFavorables();
                 break;
             case 6:
-                System.out.println("-------------------------------------");
+                System.out.println("===============================");
+                System.out.println("**** Finalizado con exito ****");
+                System.out.println("===============================");
                 break;
             default:
-                System.out.println("----Opcion Incorrecta----");
+                System.out.println("===========================");
+                System.out.println("***** Opcion invalida *****");
+                System.out.println("===========================");
                 break;
         }
     }

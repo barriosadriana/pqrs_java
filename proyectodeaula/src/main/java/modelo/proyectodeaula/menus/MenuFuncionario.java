@@ -13,18 +13,20 @@ public class MenuFuncionario {
         do {
             System.out.print("""
                                *************************
+                             
                                          MENU 
+                             
                                """);
             System.out.println("Bienvenido " + usuario.getNombre() + " "
                     + usuario.getApellido());
-            System.out.println("Indique que desea hacer \n");
+            System.out.println("Indique que desea hacer: \n");
             System.out.println("""
-                           **************************
-                           1: Mostrar   Solicitudes
+                           1: Mostrar   Solicitudes Pendientes
                            2: Responder Solicitudes
                            3: Generar Reportes
                            4: Salir
-                           **************************""");
+                               
+                           **************************\n""");
             opcion = Validador.numerosMenu();
             op.opcionesFuncionario(opcion);
             

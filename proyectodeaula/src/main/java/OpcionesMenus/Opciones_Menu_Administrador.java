@@ -23,7 +23,14 @@ public class Opciones_Menu_Administrador {
                 menu.reportes();
                 break;
             case 4:
-                System.out.println("----Finalizado con exito----");
+                System.out.println("===============================");
+                System.out.println("**** Finalizado con exito ****");
+                System.out.println("===============================");
+                break;
+            default:
+                System.out.println("===========================");
+                System.out.println("***** Opcion invalida *****");
+                System.out.println("===========================");
                 break;
         }
     }

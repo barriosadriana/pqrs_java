@@ -15,17 +15,16 @@ public class Tipo_Solicitudes {
                          2: Queja
                          3: Reclamo
                          4: Sugerencia
+                             
                          """);
             tiposolicitud = Validador.numerosMenu();
-            while (tiposolicitud == 0) {
-                System.out.println("\n ----Opcion invalida----\n");
-                tiposolicitud = Validador.numerosMenu();
-            }
-            if (tiposolicitud > 4) {
-                System.out.println("\n ----Opcion invalida----\n");
-            }
+            if(tiposolicitud != 1 && tiposolicitud != 2 && tiposolicitud != 3 && tiposolicitud != 4){
+                System.out.println("===========================");
+                System.out.println("***** Opcion invalida *****");
+                System.out.println("===========================");
+        }
+        } while (tiposolicitud != 1 && tiposolicitud != 2 && tiposolicitud != 3 && tiposolicitud != 4);
 
-        } while (tiposolicitud > 4);
         return tiposolicitud;
     }
 }
