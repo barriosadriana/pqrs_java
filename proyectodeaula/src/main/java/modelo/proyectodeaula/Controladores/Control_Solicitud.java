@@ -1,6 +1,5 @@
 package modelo.proyectodeaula.Controladores;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 import modelo.proyectodeaula.Clases.Solicitud;
 import util.Cargar_ArrayList;

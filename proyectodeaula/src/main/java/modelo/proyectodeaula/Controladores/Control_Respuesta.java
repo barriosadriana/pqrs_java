@@ -11,29 +11,34 @@ public class Control_Respuesta {
 
     /**
      * metodo para registrar una respuesta de una solicitud
+     * @return respuesta
      */
-    public void registroRespuesta() {
+    public Respuesta registroRespuesta() {
         Control_Solicitud control = new Control_Solicitud();
         Control_Respuesta resp = new Control_Respuesta();
         Scanner teclado = new Scanner(System.in);
         String fecha = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
-        Respuesta objeto1 = new Respuesta();
+        Respuesta answer = new Respuesta();
         System.out.println("-------------------\n");
         System.out.print("Ingrese el numero de radicado a responder: ");
         int radicado = teclado.nextInt();
         teclado.nextLine();
-        objeto1.setRadicado(radicado);
+        answer.setRadicado(radicado);
         System.out.println("\n----Ingrese su respuesta----");
         String respuesta = teclado.nextLine();
-        objeto1.setRespuesta(respuesta);
+        answer.setRespuesta(respuesta);
         System.out.print("Ingrese el nombre del funcionario que esta respondiendo la solicitud: ");
         String funcionario = teclado.nextLine();
-        objeto1.setFuncionario(funcionario);
-        objeto1.setFecha(fecha);
-        Cargar_ArrayList.Respuestas.add(objeto1);
+        answer.setFuncionario(funcionario);
+        answer.setFecha(fecha);
         control.actualizarEstadoRespuesta(radicado);
         resp.favorableono();
+        return answer;
 
+    }
+    
+    public void guardarRespuesta(Respuesta respuesta){
+        Cargar_ArrayList.Respuestas.add(respuesta);
     }
 
     public void favorableono() {

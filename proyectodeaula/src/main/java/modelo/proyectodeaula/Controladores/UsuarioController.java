@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import modelo.proyectodeaula.Clases.Respuesta;
 import modelo.proyectodeaula.Clases.Usuario;
 import modelo.proyectodeaula.menus.MenuAdministrador;
 import modelo.proyectodeaula.menus.MenuFuncionario;
@@ -210,7 +211,8 @@ public class UsuarioController {
             System.out.print("\nNo hay solicitudes registradas");
             System.out.print("\n");
         } else {
-            resp.registroRespuesta();
+           Respuesta respuesta = resp.registroRespuesta();
+           resp.guardarRespuesta(respuesta);
         }
     }
 }
